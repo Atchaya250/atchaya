@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="todo-container">
+        <h2>To-Do List <span>📝</span></h2>
+        <form id="task-form">
+            <input type="text" id="task-input" placeholder="Add your task">
+            <button type="submit">ADD</button>
+        </form>
+        <ul id="task-list" class="task-list"></ul>
+    </div>
+
+    <script>
+        // Array to hold tasks
+        let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+
+        // Function to render tasks
+        function renderTasks() {
+            const taskList = document.getElementById('task-list');
+            taskList.innerHTML = ''; // Clear the list
+
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+
+                const taskSpan = document.createElement('span');
+                taskSpan.textContent = task;
+                li.appendChild(taskSpan);
+
+                const deleteButton = document.createElement('button');
+                deleteButton.textContent = '×';
+                deleteButton.className = 'delete-btn';
+                deleteButton.addEventListener('click', () => {
+                    deleteTask(index);
+                });
+                li.appendChild(deleteButton);
+
+                taskList.appendChild(li);
+            });
+        }
+
+        // Function to add a task
+        function addTask(task) {
+            if (task) {
+                tasks.push(task);
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                renderTasks();
+            }
+        }
+
+        // Function to delete a task
+        function deleteTask(index) {
+            tasks.splice(index, 1);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            renderTasks();
+        }
+
+        // Handle form submission
+        document.getElementById('task-form').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent the form from submitting
+            const taskInput = document.getElementById('task-input');
+            addTask(taskInput.value);
+            taskInput.value = ''; // Clear the input
+        });
+
+        // Initial rendering of tasks
+        renderTasks();
+    </script>
+</body>
+</html>
