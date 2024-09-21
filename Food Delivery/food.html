@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Delivery App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Food Delivery App</h1>
+    </header>
+
+    <main>
+        <section id="menu">
+            <div class="dish">
+                <img src="burger.jpg" alt="Burger">
+                <h2>Burger</h2>
+                <p>$10</p>
+                <p>Delicious beef burger with fresh lettuce and tomatoes.</p>
+                <button onclick="addToCart('Burger', 10)">Add to Cart</button>
+            </div>
+
+            <div class="dish">
+                <img src="pizza.jpg" alt="Pizza">
+                <h2>Pizza</h2>
+                <p>$15</p>
+                <p>Cheesy pizza topped with pepperoni and olives.</p>
+                <button onclick="addToCart('Pizza', 15)">Add to Cart</button>
+            </div>
+
+            <div class="dish">
+                <img src="pasta.jpg" alt="Pasta">
+                <h2>Pasta</h2>
+                <p>$12</p>
+                <p>Creamy pasta with chicken and mushroom sauce.</p>
+                <button onclick="addToCart('Pasta', 12)">Add to Cart</button>
+            </div>
+        </section>
+
+        <section id="cart">
+            <h2>Cart</h2>
+            <ul id="cartItems"></ul>
+            <p>Total: $<span id="totalPrice">0</span></p>
+            <button onclick="checkout()">Checkout</button>
+        </section>
+
+        <div id="orderConfirmation" class="hidden">
+            <img src="order-placed.jpg" alt="Order Placed">
+            <h2>Your order has been placed successfully!</h2>
+            <button onclick="confirmOrder()">Confirm</button>
+        </div>
+    </main>
+    <footer>
+      <p>&copy;2024 Food Delivery.All Rights Reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
