@@ -40,7 +40,7 @@ main {
     text-align: center;
     flex-basis:22%;
     max-width:200px;
-    height:300px;
+    height:100px;
 }
 
 .dish img {
