@@ -52,7 +52,7 @@ main {
 }
 
 button {
-    background-color: black;
+    background-color: #ff4d4d;
     color: white;
     border: none;
     padding: 8px;
@@ -61,7 +61,7 @@ button {
 }
 
 button:hover {
-    background-color: #ff1a1a;
+    background-color: black;
 }
 
 #cart {
