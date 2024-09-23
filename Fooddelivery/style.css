@@ -38,7 +38,9 @@ main {
     border-radius: 2px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     text-align: center;
-    flex-basis:24%;
+    flex-basis:22%;
+    max-width:200px;
+    height:300px;
 }
 
 .dish img {
