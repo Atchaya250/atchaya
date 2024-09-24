@@ -18,7 +18,7 @@ function updateCart() {
     for (let dishName in cart) {
         const item = cart[dishName];
         const li = document.createElement('li');
-        li.textContent = `${dishName} - ${item.quantity} x $${item.price}`;
+        li.textContent = `₹{dishName} - ₹{item.quantity} x ₹₹{item.price}`;
         cartItems.appendChild(li);
         totalPrice += item.price * item.quantity;
     }
