@@ -75,7 +75,7 @@ function loadFeed() {
 
     let followedPosts = posts.filter(post => currentUser.following.includes(post.author) || post.author === currentUser.username);
 
-    followedPosts.forEach((post, index) => {
+    followedPosts.forEach((post) => {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
         postDiv.innerHTML = `
@@ -162,57 +162,24 @@ function loadFeed() {
         postDiv.appendChild(commentSection);
 
         // Display comments under the post
-        post.comments.forEach((comment, commentIndex) => {
+        post.comments.forEach((comment) => {
             const commentDiv = document.createElement('div');
-            commentDiv.innerHTML = `<strong>${comment.author}</strong>: ${comment.comment} <i class="fa fa-heart" style="color:red;"></i> (${comment.likes})`;
-            commentDiv.classList.add('comment');
-
-            const commentLikeBtn = document.createElement('button');
-            commentLikeBtn.innerHTML = `<i class="fa fa-heart" style="color:red;"></i> Like (${comment.likes})`;
-            commentLikeBtn.classList.add('comment-like-btn');
-            commentLikeBtn.onclick = function () {
-                post.comments[commentIndex].likes++; // Increment comment likes
-                localStorage.setItem('posts', JSON.stringify(posts));
-                loadFeed();
-            };
-
-            commentDiv.appendChild(commentLikeBtn);
-            postDiv.appendChild(commentDiv);
+            commentDiv.innerHTML = `<strong>${comment.author}</strong>: ${comment.comment} <i class="fa fa-heart" style="color: red;"></i>`;
+            commentSection.appendChild(commentDiv);
         });
 
         feed.appendChild(postDiv);
     });
 }
 
-// Load users for following/unfollowing
+// Load the list of users
 function loadUserList() {
     const userList = document.getElementById('user-list');
     userList.innerHTML = '';
 
     users.forEach(user => {
-        if (user.username !== currentUser.username) {
-            const userDiv = document.createElement('div');
-            const isFollowing = currentUser.following.includes(user.username);
-            userDiv.innerHTML = `<strong>${user.username}</strong>`;
-
-            const followBtn = document.createElement('button');
-            followBtn.innerHTML = isFollowing ? `<i class="fa fa-user-times"></i> Unfollow` : `<i class="fa fa-user-plus"></i> Follow`;
-            followBtn.classList.add('follow-btn');
-            followBtn.onclick = function () {
-                if (isFollowing) {
-                    currentUser.following = currentUser.following.filter(f => f !== user.username);
-                    user.followers = user.followers.filter(f => f !== currentUser.username);
-                } else {
-                    currentUser.following.push(user.username);
-                    user.followers.push(currentUser.username);
-                }
-                localStorage.setItem('users', JSON.stringify(users));
-                loadUserList();
-                loadFeed();
-            };
-
-            userDiv.appendChild(followBtn);
-            userList.appendChild(userDiv);
-        }
+        const userDiv = document.createElement('div');
+        userDiv.textContent = user.username;
+        userList.appendChild(userDiv);
     });
 }
