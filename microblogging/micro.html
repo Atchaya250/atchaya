@@ -1,25 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Microblogging App</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div id="post-section">
-        <h2>Create a Post</h2>
-        <textarea id="post-content" placeholder="What's on your mind?"></textarea><br>
-        <button onclick="createPost()">Post</button>
-    </div>
+<div id="auth-section">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Username">
+    <button onclick="registerOrLogin()">Log In</button>
+</div>
 
-    <div id="feed-section">
-        <h2>Your Feed</h2>
-        <div id="feed"></div>
-    </div>
+<div id="user-section" style="display:none;">
+    <h2>Welcome, <span id="current-user"></span></h2>
+    <button onclick="logout()">Logout</button>
 
-    <script src="app.js"></script>
-</body>
-</html>
+    <h3>Create a Post</h3>
+    <textarea id="post-content" placeholder="What's on your mind?"></textarea>
+    <button onclick="createPost()">Post</button>
 
+    <div id="feed"></div>
+</div>
 
+<h3>Users to Follow:</h3>
+<div id="user-list"></div>
+
+<!-- Font Awesome for icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
