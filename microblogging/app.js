@@ -10,8 +10,6 @@ const emojiOptions = [
     { emoji: '👏', count: 0 },
     { emoji: '😢', count: 0 },
     { emoji: '😍', count: 0 },
-    { emoji: '😮', count: 0 },
-    { emoji: '😂', count: 0 }
 ];
 
 // Register or login a user
@@ -118,68 +116,89 @@ function loadFeed() {
         postDiv.appendChild(dislikeBtn);
         postDiv.appendChild(deleteBtn);
 
-        // Comment section with input field and emoji bar
-        const commentSection = document.createElement('div');
-        commentSection.classList.add('comment-section');
-
-        // Emoji bar for comment reactions
-        const emojiBar = document.createElement('div');
-        emojiBar.classList.add('emoji-bar');
-        post.emojis.forEach((emoji, emojiIndex) => {
-            const emojiBtn = document.createElement('button');
-            emojiBtn.innerHTML = `${emoji.emoji} (${emoji.count})`;
+        // Display emojis and allow reacting to the post in horizontal layout
+        const emojiDiv = document.createElement('div');
+        emojiDiv.classList.add('emoji-container');
+        post.emojis.forEach((emojiObj, index) => {
+            const emojiBtn = document.createElement('span');
             emojiBtn.classList.add('emoji-btn');
+            emojiBtn.innerHTML = `${emojiObj.emoji} (${emojiObj.count})`;
             emojiBtn.onclick = function () {
-                post.emojis[emojiIndex].count++; // Increment emoji count
+                post.emojis[index].count++;
                 localStorage.setItem('posts', JSON.stringify(posts));
                 loadFeed();
             };
-            emojiBar.appendChild(emojiBtn);
+            emojiDiv.appendChild(emojiBtn);
         });
 
-        commentSection.appendChild(emojiBar);
+        postDiv.appendChild(emojiDiv);
 
-        // Comment input and submit button
+        // Comment section
+        const commentDiv = document.createElement('div');
         const commentInput = document.createElement('input');
-        commentInput.setAttribute('type', 'text');
         commentInput.setAttribute('placeholder', 'Add a comment...');
-        commentInput.classList.add('comment-input');
-
-        const commentSubmit = document.createElement('button');
-        commentSubmit.innerHTML = `Post`;
-        commentSubmit.classList.add('comment-submit');
-        commentSubmit.onclick = function () {
-            const commentText = commentInput.value.trim();
-            if (commentText) {
-                post.comments.push({ author: currentUser.username, comment: commentText, likes: 0 });
+        const commentPostBtn = document.createElement('button');
+        commentPostBtn.textContent = 'Post';
+        commentPostBtn.onclick = function () {
+            if (commentInput.value.trim()) {
+                post.comments.push({ username: currentUser.username, text: commentInput.value, likes: 0 });
                 localStorage.setItem('posts', JSON.stringify(posts));
                 loadFeed();
             }
         };
+        commentDiv.appendChild(commentInput);
+        commentDiv.appendChild(commentPostBtn);
 
-        commentSection.appendChild(commentInput);
-        commentSection.appendChild(commentSubmit);
-        postDiv.appendChild(commentSection);
+        post.comments.forEach((comment, commentIndex) => {
+            const commentText = document.createElement('div');
+            commentText.classList.add('comment-section');
+            commentText.innerHTML = `<strong>${comment.username}</strong>: ${comment.text}`;
 
-        // Display comments under the post
-        post.comments.forEach((comment) => {
-            const commentDiv = document.createElement('div');
-            commentDiv.innerHTML = `<strong>${comment.author}</strong>: ${comment.comment} <i class="fa fa-heart" style="color: red;"></i>`;
-            commentSection.appendChild(commentDiv);
+            // Like button for comment
+            const commentLikeBtn = document.createElement('button');
+            commentLikeBtn.classList.add('comment-like-btn');
+            commentLikeBtn.innerHTML = `❤️ (${comment.likes})`;
+            commentLikeBtn.onclick = function () {
+                post.comments[commentIndex].likes++;
+                localStorage.setItem('posts', JSON.stringify(posts));
+                loadFeed();
+            };
+
+            commentText.appendChild(commentLikeBtn);
+            commentDiv.appendChild(commentText);
         });
+
+        postDiv.appendChild(commentDiv);
 
         feed.appendChild(postDiv);
     });
 }
 
-// Load the list of users
+// Load the list of users and allow following/unfollowing
 function loadUserList() {
     const userList = document.getElementById('user-list');
     userList.innerHTML = '';
 
     users.forEach(user => {
-        const userDiv = document.createElement('div');
-        userDiv.textContent = user.username;
-        userList.appendChild(userDiv);
+        if (user.username !== currentUser.username) {
+            const userDiv = document.createElement('div');
+            const followBtn = document.createElement('button');
+            followBtn.textContent = currentUser.following.includes(user.username) ? 'Unfollow' : 'Follow';
+
+            followBtn.onclick = function () {
+                if (currentUser.following.includes(user.username)) {
+                    currentUser.following = currentUser.following.filter(following => following !== user.username);
+                } else {
+                    currentUser.following.push(user.username);
+                }
+                localStorage.setItem('users', JSON.stringify(users));
+                loadUserList();
+                loadFeed();
+            };
+
+            userDiv.innerHTML = `<strong>${user.username}</strong>`;
+            userDiv.appendChild(followBtn);
+            userList.appendChild(userDiv);
+        }
     });
 }
