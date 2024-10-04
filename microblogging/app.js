@@ -66,14 +66,13 @@ function createPost() {
     loadFeed();
 }
 
-// Load the feed of posts from followed users
+// Load all posts regardless of following status
 function loadFeed() {
     const feed = document.getElementById('feed');
     feed.innerHTML = '';
 
-    let followedPosts = posts.filter(post => currentUser.following.includes(post.author) || post.author === currentUser.username);
-
-    followedPosts.forEach((post) => {
+    // Get all posts
+    posts.forEach((post) => {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
         postDiv.innerHTML = `
