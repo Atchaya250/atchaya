@@ -3,31 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Microblogging App</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Social Media App</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Your CSS file -->
 </head>
 <body>
-    <div class="container">
-        <div id="auth-section">
-            <h2>Login</h2>
-            <input type="text" id="username" placeholder="Enter your username">
-            <button onclick="registerOrLogin()">Login / Register</button>
-        </div>
-
-        <div id="user-section" style="display: none;">
-            <h2>Welcome, <span id="current-user"></span></h2>
-            <button onclick="logout()">Logout</button>
-            <div>
-                <h3>Create a Post</h3>
-                <textarea id="post-content" placeholder="What's on your mind?"></textarea>
-                <button onclick="createPost()">Post</button>
-            </div>
-
-            <h3>Feed</h3>
-            <div id="feed"></div>
-        </div>
+    <div id="auth-section">
+        <input type="text" id="username" placeholder="Enter username">
+        <button onclick="registerOrLogin()">Login/Register</button>
     </div>
-    <script src="app.js"></script>
+    <div id="user-section" style="display: none;">
+        <h2 id="current-user"></h2>
+        <div id="user-list"></div>
+        <textarea id="post-content" placeholder="What's on your mind?"></textarea>
+        <button onclick="createPost()">Post</button>
+        <div id="feed"></div>
+        <button onclick="logout()">Logout</button>
+    </div>
+    <script src="app.js"></script> <!-- Your JS file -->
 </body>
 </html>
