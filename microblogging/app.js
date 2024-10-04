@@ -149,6 +149,11 @@ function loadFeed() {
         commentDiv.appendChild(commentInput);
         commentDiv.appendChild(commentPostBtn);
 
+        // Show comment count below the comment text field
+        const commentCount = document.createElement('small');
+        commentCount.textContent = `Comments: ${post.comments.length}`;
+        commentDiv.appendChild(commentCount);
+
         post.comments.forEach((comment, commentIndex) => {
             const commentText = document.createElement('div');
             commentText.classList.add('comment-section');
@@ -183,7 +188,9 @@ function loadUserList() {
         if (user.username !== currentUser.username) {
             const userDiv = document.createElement('div');
             const followBtn = document.createElement('button');
-            followBtn.textContent = currentUser.following.includes(user.username) ? 'Unfollow' : 'Follow';
+            followBtn.innerHTML = currentUser.following.includes(user.username)
+                ? `<i class="fa fa-user-minus"></i> Unfollow`
+                : `<i class="fa fa-user-plus"></i> Follow`;
 
             followBtn.onclick = function () {
                 if (currentUser.following.includes(user.username)) {
