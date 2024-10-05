@@ -86,6 +86,18 @@ button:hover {
     cursor: pointer;
     color: red;
 }
+.emoji-container {
+    display: flex;
+    margin-top: 10px;
+}
+
+.comment-section {
+    margin-top: 5px;
+}
+
+button {
+    margin-right: 5px; 
+}
 .post-image {
     max-width: 100%;
     height: auto;
