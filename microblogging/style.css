@@ -110,3 +110,20 @@ button {
     color: white;
     margin-right: 10px; /* Added margin to create space between buttons */
 }
+/* Follow/Unfollow Button Styling */
+.follow-btn {
+    background-color: transparent; /* Remove the default background color */
+    border: 1px solid gray; /* Add a border */
+    padding: 5px 10px;
+    color: gray; /* Change text color */
+    cursor: pointer;
+    border-radius: 5px; /* Rounded corners */
+    margin-left: 10px; /* Add space from the username */
+}
+
+/* On hover effect for the buttons */
+.follow-btn:hover {
+    background-color: lightgray; /* Change background on hover */
+    color: black; /* Change text color on hover */
+}
+
