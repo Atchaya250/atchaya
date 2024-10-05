@@ -47,7 +47,7 @@ function logout() {
 function createPost() {
     const content = document.getElementById('post-content').value.trim();
     const imageInput = document.getElementById('post-image');
-    
+
     if (!content && !imageInput.files.length) {
         alert("Post content or image cannot be empty.");
         return;
@@ -71,25 +71,24 @@ function createPost() {
     };
     posts.push(post);
     localStorage.setItem('posts', JSON.stringify(posts));
-    
+
     // Clear input fields after posting
     document.getElementById('post-content').value = ''; 
     imageInput.value = '';
-    
+
     loadFeed();
 }
 
-// Load the feed of posts from followed users
+// Load the feed of posts from all users
 function loadFeed() {
     const feed = document.getElementById('feed');
     feed.innerHTML = '';
 
-    let followedPosts = posts.filter(post => currentUser.following.includes(post.author) || post.author === currentUser.username);
-
-    followedPosts.forEach((post) => {
+    // Display posts from all users
+    posts.forEach((post) => {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
-        
+
         // Display content and image
         postDiv.innerHTML = `
             <strong>${post.author}</strong><br>
@@ -207,6 +206,10 @@ function loadUserList() {
             followBtn.innerHTML = currentUser.following.includes(user.username)
                 ? `<i class="fa fa-user-minus"></i> Unfollow`
                 : `<i class="fa fa-user-plus"></i> Follow`;
+
+            // Set the button to be transparent and not blue
+            followBtn.style.backgroundColor = 'transparent'; // Make the button transparent
+            followBtn.style.color = 'black'; // Set text color to black or any color of your choice
 
             followBtn.onclick = function () {
                 if (currentUser.following.includes(user.username)) {
