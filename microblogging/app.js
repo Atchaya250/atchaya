@@ -79,13 +79,14 @@ function createPost() {
     loadFeed();
 }
 
-// Load the feed of posts from all users
+// Load the feed of posts from followed users
 function loadFeed() {
     const feed = document.getElementById('feed');
     feed.innerHTML = '';
 
-    // Display posts from all users
-    posts.forEach((post) => {
+    let followedPosts = posts.filter(post => currentUser.following.includes(post.author) || post.author === currentUser.username);
+
+    followedPosts.forEach((post) => {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
 
@@ -161,14 +162,18 @@ function loadFeed() {
                 loadFeed();
             }
         };
+
+        // Comment input and button
         commentDiv.appendChild(commentInput);
         commentDiv.appendChild(commentPostBtn);
 
         // Show comment count below the comment text field
         const commentCount = document.createElement('small');
+        commentCount.classList.add('comment-count'); // Add class for styling if needed
         commentCount.textContent = `Comments: ${post.comments.length}`;
-        commentDiv.appendChild(commentCount);
+        commentDiv.appendChild(commentCount); // Append count to commentDiv
 
+        // Display existing comments
         post.comments.forEach((comment, commentIndex) => {
             const commentText = document.createElement('div');
             commentText.classList.add('comment-section');
@@ -189,7 +194,6 @@ function loadFeed() {
         });
 
         postDiv.appendChild(commentDiv);
-
         feed.appendChild(postDiv);
     });
 }
@@ -206,10 +210,6 @@ function loadUserList() {
             followBtn.innerHTML = currentUser.following.includes(user.username)
                 ? `<i class="fa fa-user-minus"></i> Unfollow`
                 : `<i class="fa fa-user-plus"></i> Follow`;
-
-            // Set the button to be transparent and not blue
-            followBtn.style.backgroundColor = 'transparent'; // Make the button transparent
-            followBtn.style.color = 'black'; // Set text color to black or any color of your choice
 
             followBtn.onclick = function () {
                 if (currentUser.following.includes(user.username)) {
