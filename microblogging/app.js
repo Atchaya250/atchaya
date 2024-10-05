@@ -43,16 +43,25 @@ function logout() {
     document.getElementById('user-section').style.display = 'none';
 }
 
-// Create a new post
+// Create a new post with image support
 function createPost() {
     const content = document.getElementById('post-content').value.trim();
-    if (!content) {
-        alert("Post content cannot be empty.");
+    const imageInput = document.getElementById('post-image');
+    
+    if (!content && !imageInput.files.length) {
+        alert("Post content or image cannot be empty.");
         return;
+    }
+
+    let imageUrl = '';
+    if (imageInput.files.length) {
+        const file = imageInput.files[0];
+        imageUrl = URL.createObjectURL(file);  // Get local URL for the image
     }
 
     const post = {
         content,
+        imageUrl,
         author: currentUser.username,
         likes: 0,
         dislikes: 0,
@@ -62,22 +71,30 @@ function createPost() {
     };
     posts.push(post);
     localStorage.setItem('posts', JSON.stringify(posts));
-    document.getElementById('post-content').value = ''; // Clear input after posting
+    
+    // Clear input fields after posting
+    document.getElementById('post-content').value = ''; 
+    imageInput.value = '';
+    
     loadFeed();
 }
 
-// Load all posts regardless of following status
+// Load the feed of posts from followed users
 function loadFeed() {
     const feed = document.getElementById('feed');
     feed.innerHTML = '';
 
-    // Get all posts
-    posts.forEach((post) => {
+    let followedPosts = posts.filter(post => currentUser.following.includes(post.author) || post.author === currentUser.username);
+
+    followedPosts.forEach((post) => {
         const postDiv = document.createElement('div');
         postDiv.classList.add('post');
+        
+        // Display content and image
         postDiv.innerHTML = `
             <strong>${post.author}</strong><br>
-            ${post.content}<br>
+            ${post.content ? post.content + '<br>' : ''}
+            ${post.imageUrl ? `<img src="${post.imageUrl}" class="post-image" alt="Post Image"><br>` : ''}
             <small>Posted on: ${post.postedAt}</small><br>
         `;
 
