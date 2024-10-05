@@ -64,6 +64,13 @@ button:hover {
     border-radius: 5px;
 }
 
+.comment-count {
+    display: block;
+    margin-top: 10px;
+    font-size: 0.9em;
+    color: #777;
+}
+
 .emoji-bar {
     margin-bottom: 10px;
 }
