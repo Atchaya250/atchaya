@@ -117,20 +117,33 @@ button {
     color: white;
     margin-right: 10px; /* Added margin to create space between buttons */
 }
-/* Follow/Unfollow Button Styling */
+
+/* Follow/Unfollow Button Styling (Blue with icon) */
 .follow-btn {
-    background-color: transparent; /* Remove the default background color */
-    border: none; /* Add a border */
+    background-color: transparent;
+    border: none;
     padding: 5px 10px;
-    color: inherit; /* Change text color */
+    color: #007bff;  /* Blue color similar to the image */
     cursor: pointer;
-    border-radius: 5px; /* Rounded corners */
-    margin-left: 10px; /* Add space from the username */
+    font-size: 1em;
+    text-transform: capitalize;
+    display: flex;
+    align-items: center;
+    gap: 5px;  /* Space between icon and text */
 }
 
-/* On hover effect for the buttons */
+/* On hover, the color becomes a darker blue */
 .follow-btn:hover {
-    background-color: lightgray; /* Change background on hover */
-    color: black; 
+    color: #0056b3;  /* Darker blue on hover */
+}
+
+/* Icon Styling (if using Font Awesome or similar icons) */
+.follow-btn i {
+    color: #007bff;
+}
+
+/* Optional: Style for the "+" part */
+.follow-btn::before {
+    content: '+ ';
 }
 
