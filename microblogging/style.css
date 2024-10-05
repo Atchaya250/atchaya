@@ -120,30 +120,9 @@ button {
 
 /* Follow/Unfollow Button Styling (Blue with icon) */
 .follow-btn {
-    background-color: transparent;
-    border: none;
-    padding: 5px 10px;
-    color: #007bff;  /* Blue color similar to the image */
-    cursor: pointer;
-    font-size: 1em;
-    text-transform: capitalize;
-    display: flex;
-    align-items: center;
-    gap: 5px;  /* Space between icon and text */
-}
+    background-color: #28a745;
 
 /* On hover, the color becomes a darker blue */
 .follow-btn:hover {
-    color: #0056b3;  /* Darker blue on hover */
-}
-
-/* Icon Styling (if using Font Awesome or similar icons) */
-.follow-btn i {
-    color: #007bff;
-}
-
-/* Optional: Style for the "+" part */
-.follow-btn::before {
-    content: '+ ';
-}
+    background-color: #218838; 
 
