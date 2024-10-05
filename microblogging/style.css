@@ -124,6 +124,6 @@ button {
 /* On hover effect for the buttons */
 .follow-btn:hover {
     background-color: lightgray; /* Change background on hover */
-    color: black; /* Change text color on hover */
+    color: black; 
 }
 
