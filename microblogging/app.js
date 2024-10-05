@@ -70,7 +70,7 @@ function createPost() {
 function loadFeed() {
     const feed = document.getElementById('feed');
     feed.innerHTML = '';
-    
+
     // Get all posts
     posts.forEach((post) => {
         const postDiv = document.createElement('div');
@@ -80,7 +80,7 @@ function loadFeed() {
             ${post.content}<br>
             <small>Posted on: ${post.postedAt}</small><br>
         `;
-       
+
         // Like button for posts
         const likeBtn = document.createElement('button');
         likeBtn.innerHTML = `<i class="fa fa-thumbs-up"></i> Like (${post.likes})`;
