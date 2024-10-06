@@ -112,7 +112,7 @@ button {
     margin: 10px 0; /* Adds some space between the image and other elements */
 }
 
-.like-btn, .dislike-btn, .comment-like-btn {
+.like-btn, .dislike-btn {
     background-color: #007bff;
     color: white;
     margin-right: 10px; /* Added margin to create space between buttons */
