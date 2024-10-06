@@ -3,9 +3,9 @@ body {
     background-color: #f4f4f4;
     margin: 0;
     padding: 0;
-    display:flex;
-    flex-direction:column;
-    min-height:100vh;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -13,42 +13,54 @@ header {
     color: white;
     text-align: center;
     padding: 10px;
-    
 }
 
 main {
-    flex:1;
+    flex: 1;
     display: flex;
-    padding:20px;
-    flex-direction: row; 
-    align-items: center;    
+    padding: 20px;
+    flex-direction: column; /* Change to column for smaller devices */
+    align-items: center;
+}
 
-    gap:20px;
+#restaurantSelect {
+    display: flex;
+    flex-direction: column; /* Stack vertically for smaller screens */
+    align-items: center; /* Center horizontally */
+    margin-bottom: 20px;
+}
+
+#restaurantSelect select {
+    padding: 10px;
+    font-size: 16px;
+    width: 100%; /* Full width */
+    max-width: 300px; /* Limit max width for larger screens */
 }
 
 #menu {
-    display:flex;
+    display: flex;
     flex-direction: row;
-    align-items:center;
-    gap:20px;
+    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    justify-content: center;
+    gap: 20px;
+    width: 100%; /* Full width */
 }
 
-.dish {
+.menu-item {
     background-color: white;
     margin: 10px;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width:100%;
-    max-width:600px;
-   
+    width: 100%; /* Full width on small devices */
+    max-width: 250px; /* Set a max width for larger screens */
+    flex: 1 1 250px; /* Allow flexible growth */
 }
 
-.dish img {
-    width: 100px;
-    height: 100px;
-    object-fit: cover;
+.menu-item img {
+    width: 100%;
+    height: auto; /* Maintain aspect ratio */
     border-radius: 5px;
     margin-bottom: 5px;
 }
@@ -57,14 +69,15 @@ button {
     background-color: black;
     color: white;
     border: none;
-    padding: 5px;
+    padding: 5px 8px; /* Smaller padding */
     border-radius: 5px;
     cursor: pointer;
-    font-size:13px;
+    font-size: 11px; /* Smaller font size */
+    width: auto; /* Auto width to fit content */
 }
 
 button:hover {
-    background-color: black;
+    background-color: #333;
 }
 
 #cart {
@@ -73,7 +86,8 @@ button:hover {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width:600px
+    max-width: 600px; /* Centered max width */
+    margin: 20px auto; /* Center cart with margin */
 }
 
 #cartItems {
@@ -90,30 +104,44 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-color: orange; /* Changed to orange */
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     display: none;
+    width: 90%; /* Responsive width */
+    max-width: 400px; /* Max width for confirmation dialog */
 }
 
-#orderConfirmation img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 20px;
+footer {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
 }
-footer{
-  background-color:black;
-  color:white;
-  text-align:center;
-  padding:20px;
-  margin-top:auto;
+
+footer p {
+    margin: 5px 0;
 }
-footer p{
-margin:5px 0;
-}
- 
+
 .hidden {
     display: none;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    #menu {
+        flex-direction: column; /* Stack menu items vertically on small screens */
+        align-items: center; /* Center items */
+    }
+
+    .menu-item {
+        max-width: 90%; /* Allow menu items to take up more space */
+    }
+
+    #cart {
+        margin: 10px; /* Less margin for smaller screens */
+    }
 }
