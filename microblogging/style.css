@@ -137,7 +137,7 @@ button {
     position: absolute; /* Absolute positioning */
     top: 20px; /* Distance from the top of the parent */
     right: 20px; /* Distance from the right of the parent */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    
     
 }
 
