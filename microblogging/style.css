@@ -120,17 +120,19 @@ button {
 /* Container for user profiles */
 .user-profile {
     position: relative;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0; /* Spacing between user profiles */
     display: flex; /* Display user profile and follow button in one row */
-    justify-content: flex-end; /* Space between the name and button */
-    width:100%;
-    height: auto;
-    
+    justify-content: space-between; /* Space between the name and button */
+    align-items: center; /* Align vertically */
 }
 
 /* Follow/Unfollow button styles */
 .follow-btn {
     background-color: transparent;
-    border: none; 
+    border: none; /* Blue border */
     color: #007bff;
     font-size: 14px;
     padding: 8px 16px;
