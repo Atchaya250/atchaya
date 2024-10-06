@@ -207,6 +207,7 @@ function loadUserList() {
         if (user.username !== currentUser.username) {
             const userDiv = document.createElement('div');
             const followBtn = document.createElement('button');
+       followBtn.classList.add('follow-btn');
             followBtn.innerHTML = currentUser.following.includes(user.username)
                 ? `<i class="fa fa-user-minus"></i> Unfollow`
                 : `<i class="fa fa-user-plus"></i> Follow`;
