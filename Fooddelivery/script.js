@@ -14,7 +14,7 @@ const menus = {
         { name: "Bacon Burger", price: 900, img: "burger3.jpg" }
     ],
     "Pasta House": [
-        { name: "Spaghetti Bolognese", price: 1200, img: "pasta.jpg" },
+        { name: "Spaghetti Bolognese", price: 1200, img: "https://images.app.goo.gl/nFZxcw2UyedGKXsW9" },
         { name: "Penne Alfredo", price: 900, img: "pasta2.jpg" },
         { name: "Fettuccine Carbonara", price: 1000, img: "pasta3.jpg" }
     ]
