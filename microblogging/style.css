@@ -132,7 +132,7 @@ button {
 /* Follow/Unfollow button styles */
 .follow-btn {
     background-color: transparent;
-    border: 2px solid #007bff; /* Blue border */
+    border: none; 
     color: #007bff;
     font-size: 14px;
     padding: 8px 16px;
