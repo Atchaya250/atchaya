@@ -119,8 +119,11 @@ button {
 }
 
 .user-profile {
-    position: relative; /* Make this the reference point for absolute positioning */
+    position: relative; /* Allow absolute positioning of child elements */
     padding: 20px; /* Add padding for spacing */
+    border: 1px solid #ccc; /* Optional: add a border for visibility */
+    border-radius: 8px; /* Optional: rounded corners */
+    margin: 20px; /* Optional: space around the profile */
 }
 
 .follow-btn {
@@ -132,8 +135,8 @@ button {
     border-radius: 20px; /* Rounded corners */
     cursor: pointer; /* Pointer cursor */
     position: absolute; /* Absolute positioning */
-    top: 20px; /* Adjust to position from the top */
-    right: 20px; /* Adjust to position from the right */
+    top: 20px; /* Distance from the top of the parent */
+    right: 20px; /* Distance from the right of the parent */
     transition: background-color 0.3s, color 0.3s; /* Smooth transition */
     z-index: 10; /* Ensure it appears above other elements */
 }
