@@ -4,17 +4,17 @@ let totalPrice = 0;
 // Sample menus for each restaurant with prices in Indian Rupees
 const menus = {
     "Pizza Place": [
-        { name: "Margherita Pizza", price: 900, img: "pizza1.jpg" },
+        { name: "Margherita Pizza", price: 900, img: "pizza.jpg" },
         { name: "Pepperoni Pizza", price: 1200, img: "pizza2.jpg" },
         { name: "Vegetable Pizza", price: 800, img: "pizza3.jpg" }
     ],
     "Burger Joint": [
-        { name: "Cheeseburger", price: 800, img: "burger1.jpg" },
+        { name: "Cheeseburger", price: 800, img: "burger.jpg" },
         { name: "Veggie Burger", price: 600, img: "burger2.jpg" },
         { name: "Bacon Burger", price: 900, img: "burger3.jpg" }
     ],
     "Pasta House": [
-        { name: "Spaghetti Bolognese", price: 1200, img: "pasta1.jpg" },
+        { name: "Spaghetti Bolognese", price: 1200, img: "pasta.jpg" },
         { name: "Penne Alfredo", price: 900, img: "pasta2.jpg" },
         { name: "Fettuccine Carbonara", price: 1000, img: "pasta3.jpg" }
     ]
