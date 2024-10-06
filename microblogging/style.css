@@ -117,30 +117,31 @@ button {
     color: white;
     margin-right: 10px; /* Added margin to create space between buttons */
 }
-/* Follow/Unfollow button styling */
+
+.user-profile {
+    position: relative; /* Make this the reference point for absolute positioning */
+    padding: 20px; /* Add padding for spacing */
+}
+
 .follow-btn {
-    background-color: transparent;
-    border: none;
-    color: #007bff;  /* Blue color for text */
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    gap: 5px;  /* Space between icon and text */
-    text-transform: capitalize;
+    background-color: transparent; /* Transparent background */
+    border: 2px solid #007bff; /* Solid border color */
+    color: #007bff; /* Text color */
+    font-size: 14px; /* Font size */
+    padding: 8px 16px; /* Padding */
+    border-radius: 20px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+    position: absolute; /* Absolute positioning */
+    top: 20px; /* Adjust to position from the top */
+    right: 20px; /* Adjust to position from the right */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    z-index: 10; /* Ensure it appears above other elements */
 }
 
-/* Icon styling inside follow button */
-.follow-btn i {
-    font-size: 18px;
-    color: #007bff;  /* Blue icon color */
-}
-
-/* Hover effect for follow button */
 .follow-btn:hover {
-    color: #0056b3;  /* Darker blue on hover */
+    background-color: #007bff; /* Background color on hover */
+    color: white; /* Change text color on hover */
 }
-
 /* Flex layout for the user list item */
 .user-list-item {
     display: flex;
