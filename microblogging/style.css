@@ -112,8 +112,13 @@ button {
     margin: 10px 0; /* Adds some space between the image and other elements */
 }
 
-.like-btn, .dislike-btn, .delete-btn, .comment-like-btn {
+.like-btn, .dislike-btn, .comment-like-btn {
     background-color: #007bff;
+    color: white;
+    margin-right: 10px; /* Added margin to create space between buttons */
+}
+.delete-btn{
+    background-color: #d11a2a;
     color: white;
     margin-right: 10px; /* Added margin to create space between buttons */
 }
