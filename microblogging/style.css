@@ -129,7 +129,6 @@ button {
 
 /* Follow/Unfollow button styles */
 .follow-btn {
-    position: absolute;
     background-color: transparent;
     border: none; 
     color: #007bff;
