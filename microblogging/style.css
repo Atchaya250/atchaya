@@ -117,12 +117,42 @@ button {
     color: white;
     margin-right: 10px; /* Added margin to create space between buttons */
 }
-
-/* Follow/Unfollow Button Styling (Blue with icon) */
+/* Follow/Unfollow button styling */
 .follow-btn {
-    background-color: #28a745;
+    background-color: transparent;
+    border: none;
+    color: #007bff;  /* Blue color for text */
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;  /* Space between icon and text */
+    text-transform: capitalize;
+}
 
-/* On hover, the color becomes a darker blue */
+/* Icon styling inside follow button */
+.follow-btn i {
+    font-size: 18px;
+    color: #007bff;  /* Blue icon color */
+}
+
+/* Hover effect for follow button */
 .follow-btn:hover {
-    background-color: #218838; 
+    color: #0056b3;  /* Darker blue on hover */
+}
+
+/* Flex layout for the user list item */
+.user-list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin: 10px 0;
+}
+
+/* Add some margin to the user list container */
+#user-list {
+    margin-top: 20px;
+}
+
 
