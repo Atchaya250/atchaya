@@ -18,85 +18,70 @@ header {
 main {
     flex: 1;
     display: flex;
-    padding: 20px;
-    flex-direction: column; /* Change to column for smaller devices */
+    flex-direction: column;
     align-items: center;
-}
-
-#restaurantSelect {
-    display: flex;
-    flex-direction: column; /* Stack vertically for smaller screens */
-    align-items: center; /* Center horizontally */
-    margin-bottom: 20px;
-}
-
-#restaurantSelect select {
-    padding: 10px;
-    font-size: 16px;
-    width: 100%; /* Full width */
-    max-width: 300px; /* Limit max width for larger screens */
+    padding: 20px;
 }
 
 #menu {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap; /* Allow wrapping for responsiveness */
+    flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    width: 100%; /* Full width */
+    width: 100%;
 }
 
 .menu-item {
     background-color: white;
-    margin: 10px;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
-    width: 100%; /* Full width on small devices */
-    max-width: 250px; /* Set a max width for larger screens */
-    flex: 1 1 250px; /* Allow flexible growth */
+    width: 300px;
 }
 
 .menu-item img {
-    width: 100%;
-    height: auto; /* Maintain aspect ratio */
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     border-radius: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-button {
+.addToCartBtn {
     background-color: black;
     color: white;
     border: none;
-    padding: 5px 8px; /* Smaller padding */
+    padding: 8px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 11px; /* Smaller font size */
-    width: auto; /* Auto width to fit content */
 }
 
-button:hover {
+.addToCartBtn:hover {
     background-color: #333;
 }
 
 #cart {
-    width: 100%;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 600px; /* Centered max width */
-    margin: 20px auto; /* Center cart with margin */
+    margin-top: 20px;
+    width: 100%;
+    max-width: 600px;
 }
 
-#cartItems {
-    list-style-type: none;
-    padding: 0;
+#checkoutBtn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 8px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-#cartItems li {
-    margin-bottom: 20px;
+#checkoutBtn:hover {
+    background-color: #ff8800;
 }
 
 #orderConfirmation {
@@ -104,44 +89,10 @@ button:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: orange; /* Changed to orange */
+    background-color: white;
     padding: 20px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
+    border-radius: 10px;
     display: none;
-    width: 90%; /* Responsive width */
-    max-width: 400px; /* Max width for confirmation dialog */
-}
-
-footer {
-    background-color: black;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: auto;
-}
-
-footer p {
-    margin: 5px 0;
-}
-
-.hidden {
-    display: none;
-}
-
-/* Media Queries for Responsive Design */
-@media (max-width: 768px) {
-    #menu {
-        flex-direction: column; /* Stack menu items vertically on small screens */
-        align-items: center; /* Center items */
-    }
-
-    .menu-item {
-        max-width: 90%; /* Allow menu items to take up more space */
-    }
-
-    #cart {
-        margin: 10px; /* Less margin for smaller screens */
-    }
 }
