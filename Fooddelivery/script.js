@@ -1,27 +1,42 @@
 let cart = {};
 let totalPrice = 0;
 
-// Sample menus for each restaurant with prices in Indian Rupees
+// Sample menus for each restaurant
 const menus = {
     "Pizza Place": [
-        { name: "Margherita Pizza", price: 900, img: "pizza.jpg" },
-        { name: "Pepperoni Pizza", price: 1200, img: "pizza2.jpg" },
-        { name: "Vegetable Pizza", price: 800, img: "pizza3.jpg" }
+        { name: "Margherita Pizza", price: 120, img: "pizza1.jpg" },
+        { name: "Pepperoni Pizza", price: 150, img: "pizza2.jpg" },
+        { name: "Vegetable Pizza", price: 100, img: "pizza3.jpg" }
     ],
     "Burger Joint": [
-        { name: "Cheeseburger", price: 800, img: "burger.jpg" },
-        { name: "Veggie Burger", price: 600, img: "burger2.jpg" },
-        { name: "Bacon Burger", price: 900, img: "burger3.jpg" }
+        { name: "Cheeseburger", price: 100, img: "burger1.jpg" },
+        { name: "Veggie Burger", price: 80, img: "burger2.jpg" },
+        { name: "Bacon Burger", price: 120, img: "burger3.jpg" }
     ],
     "Pasta House": [
-        { name: "Spaghetti Bolognese", price: 1200, img: "https://images.app.goo.gl/nFZxcw2UyedGKXsW9" },
-        { name: "Penne Alfredo", price: 900, img: "pasta2.jpg" },
-        { name: "Fettuccine Carbonara", price: 1000, img: "pasta3.jpg" }
+        { name: "Spaghetti Bolognese", price: 140, img: "pasta1.jpg" },
+        { name: "Penne Alfredo", price: 120, img: "pasta2.jpg" },
+        { name: "Fettuccine Carbonara", price: 130, img: "pasta3.jpg" }
+    ],
+    "Dosa House": [
+        { name: "Plain Dosa", price: 50, img: "dosa1.jpg" },
+        { name: "Masala Dosa", price: 70, img: "dosa2.jpg" },
+        { name: "Cheese Dosa", price: 90, img: "dosa3.jpg" }
+    ],
+    "Biryani Hub": [
+        { name: "Chicken Biryani", price: 150, img: "biryani1.jpg" },
+        { name: "Mutton Biryani", price: 180, img: "biryani2.jpg" },
+        { name: "Veg Biryani", price: 120, img: "biryani3.jpg" }
+    ],
+    "Shawarma Corner": [
+        { name: "Chicken Shawarma", price: 100, img: "shawarma1.jpg" },
+        { name: "Beef Shawarma", price: 120, img: "shawarma2.jpg" },
+        { name: "Veg Shawarma", price: 90, img: "shawarma3.jpg" }
     ]
 };
 
 function loadMenu() {
-    const restaurant = document.getElementById('restaurants').value;
+    const restaurant = document.getElementById('restaurantSelect').value;
     const menuDiv = document.getElementById('menu');
     menuDiv.innerHTML = '';
 
@@ -33,7 +48,7 @@ function loadMenu() {
                 <img src="${item.img}" alt="${item.name}">
                 <h3>${item.name}</h3>
                 <p>₹${item.price}</p>
-                <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
+                <button class="addToCartBtn" onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
             `;
             menuDiv.appendChild(menuItemDiv);
         });
@@ -62,7 +77,7 @@ function updateCart() {
         totalPrice += item.price * item.quantity;
     }
 
-    document.getElementById('totalPrice').textContent = `Total: ₹${totalPrice}`;
+    document.getElementById('totalPrice').textContent = totalPrice;
 }
 
 function checkout() {
