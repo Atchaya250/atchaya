@@ -4,12 +4,12 @@ let totalPrice = 0;
 // Sample menus for each restaurant
 const menus = {
     "Pizza Place": [
-        { name: "Margherita Pizza", price: 120, img: "pizza1.jpg" },
+        { name: "Margherita Pizza", price: 120, img: "pizza.jpg" },
         { name: "Pepperoni Pizza", price: 150, img: "pizza2.jpg" },
         { name: "Vegetable Pizza", price: 100, img: "pizza3.jpg" }
     ],
     "Burger Joint": [
-        { name: "Cheeseburger", price: 100, img: "burger1.jpg" },
+        { name: "Cheeseburger", price: 100, img: "burger.jpg" },
         { name: "Veggie Burger", price: 80, img: "burger2.jpg" },
         { name: "Bacon Burger", price: 120, img: "burger3.jpg" }
     ],
