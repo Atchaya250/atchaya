@@ -1,4 +1,4 @@
-let cart = {};
+nlet cart = {};
 let totalPrice = 0;
 
 // Sample menus for each restaurant with descriptions and ratings
