@@ -134,6 +134,7 @@ function showCart() {
     document.getElementById("orderConfirmation").style.display = "none";
     document.getElementById("cart").style.display = "block";
     document.getElementById("breadcrumbs").innerText = "Cart";
+    updateCart()
 }
 }    
 
