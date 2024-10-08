@@ -156,7 +156,8 @@ function showOrder() {
 
 // Confirm Order
 function confirmOrder() {
-    alert("Your order has been confirmed!");
+    alert("Your order has been confirmed!
+          Deliver within 20 minutes");
     // Reset cart and total price
     cart = {};
     totalPrice = 0;
