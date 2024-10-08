@@ -126,6 +126,10 @@ function updateCart() {
 
 // Show Cart
 function showCart() {
+    if(Object.keys(cart).length===0){
+        alert("Your cart is empty!");
+        return;
+    }
     document.getElementById("homeContent").style.display = "none";
     document.getElementById("menu").style.display = "none";
     document.getElementById("orderConfirmation").style.display = "none";
