@@ -27,6 +27,18 @@
         <p>Your one-stop solution for delicious food delivered to your doorstep.</p>
         <p>Explore various restaurants and enjoy your favorite dishes!</p>
     </div>
+<div id="menu">
+    <h2>Select Restaurant <span style="font-size: 12px;">▼</span></h2>
+    <select id="restaurantSelect" onchange="loadSelectedRestaurantMenu()">
+        <option value="">-- Select a Restaurant --</option>
+        <option value="Pizza Place">Pizza Place</option>
+        <option value="Burger Joint">Burger Joint</option>
+        <option value="Pasta House">Pasta House</option>
+        <option value="Dosa House">Dosa House</option>
+        <option value="Biryani Hub">Biryani Hub</option>
+    </select>
+</div>
+<div id="restaurantDishes"></div>
 
     <div id="menu" style="display: none;"></div>
     <div id="cart" style="display: none;">
