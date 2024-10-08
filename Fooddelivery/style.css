@@ -1,4 +1,27 @@
-/* Basic reset */
+#menu {
+    margin: 20px;
+}
+
+#restaurantSelect {
+    padding: 10px;
+    font-size: 16px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.menu-item img {
+    width: 100px; /* Adjust as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px;
+}
+
+.menu-item h4 {
+    margin: 0;
+}/* Basic reset */
 * {
     margin: 0;
     padding: 0;
