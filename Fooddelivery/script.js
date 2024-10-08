@@ -64,22 +64,16 @@ function showRestaurant() {
     document.getElementById("breadcrumbs").innerText = "Restaurant";
 }
 
-// Load Restaurant Menu
-function loadRestaurantMenu() {
-    const menuDiv = document.getElementById("menu");
-    menuDiv.style.display = "block";
-    menuDiv.innerHTML = ""; // Clear previous menu
+// Load the selected restaurant menu
+function loadSelectedRestaurantMenu() {
+    const selectedRestaurant = document.getElementById("restaurantSelect").value;
+    const dishesDiv = document.getElementById("restaurantDishes");
+    dishesDiv.innerHTML = ""; // Clear previous dishes
 
-    // Create a label for the restaurant selection
-    const selectLabel = document.createElement("h2");
-    selectLabel.innerText = "Select Restaurant";
-    menuDiv.appendChild(selectLabel); // Append label to the menuDiv
+    if (selectedRestaurant) {
+        const restaurantMenu = menus[selectedRestaurant];
 
-    for (const restaurant in menus) {
-        const restaurantDiv = document.createElement("div");
-        restaurantDiv.innerHTML = `<h3>${restaurant}</h3>`;
-        
-        menus[restaurant].slice(0, 8).forEach(item => {
+        restaurantMenu.forEach(item => {
             const itemDiv = document.createElement("div");
             itemDiv.className = "menu-item";
             itemDiv.innerHTML = `
@@ -87,13 +81,21 @@ function loadRestaurantMenu() {
                 <h4>${item.name} - ₹${item.price}</h4>
                 <p>${item.description}</p>
                 <p>Rating: ${item.rating} ⭐</p>
-                <button onclick="addToCart('${restaurant}', '${item.name}', ${item.price})">Add to Cart</button>
+                <button onclick="addToCart('${selectedRestaurant}', '${item.name}', ${item.price})">Add to Cart</button>
             `;
-            restaurantDiv.appendChild(itemDiv);
+            dishesDiv.appendChild(itemDiv);
         });
-        
-        menuDiv.appendChild(restaurantDiv);
     }
+}
+
+// Show Restaurant Page
+function showRestaurant() {
+    document.getElementById("homeContent").style.display = "none";
+    document.getElementById("cart").style.display = "none";
+    document.getElementById("orderConfirmation").style.display = "none";
+    document.getElementById("menu").style.display = "block";
+    document.getElementById("restaurantDishes").innerHTML = ""; // Clear previous dishes
+    document.getElementById("breadcrumbs").innerText = "Restaurant";
 }
 
 // Add to Cart
