@@ -116,7 +116,7 @@ function updateCart() {
     const cartItemsList = document.getElementById("cartItems");
     cartItemsList.innerHTML = ""; // Clear previous items
     if(Object.keys(cart).length===0){
-        console.log("cart is empty ");
+        alert("cart is empty ");
     }
     for (const foodName in cart) {
         const item = cart[foodName];
