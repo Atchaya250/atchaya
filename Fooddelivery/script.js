@@ -36,13 +36,13 @@ const menus = {
         { name: "Set Dosa", price: 75, img: "dosa6.jpg", description: "Thick and soft dosa served in sets.", rating: 4.2 }
     ],
     "Biryani Hub": [
-        { name: "Chicken Biryani", price: 200, img: "biryani1.jpg", description: "Aromatic rice with tender chicken pieces.", rating: 4.7 },
-        { name: "Veg Biryani", price: 150, img: "biryani2.jpg", description: "Spiced rice with mixed vegetables.", rating: 4.3 },
-        { name: "Mutton Biryani", price: 250, img: "biryani3.jpg", description: "Flavorful biryani made with mutton.", rating: 4.9 },
-        { name: "Egg Biryani", price: 180, img: "biryani4.jpg", description: "Biryani with boiled eggs and spices.", rating: 4.5
+        { name: "Chicken Biryani", price: 200, img: "briyani1.jpg", description: "Aromatic rice with tender chicken pieces.", rating: 4.7 },
+        { name: "Veg Biryani", price: 150, img: "briyani2.jpg", description: "Spiced rice with mixed vegetables.", rating: 4.3 },
+        { name: "Mutton Biryani", price: 250, img: "briyani3.jpg", description: "Flavorful biryani made with mutton.", rating: 4.9 },
+        { name: "Egg Biryani", price: 180, img: "briyani4.jpg", description: "Biryani with boiled eggs and spices.", rating: 4.5
     },
-        { name: "Hyderabadi Biryani", price: 300, img: "biryani5.jpg", description: "Authentic Hyderabadi biryani with rich flavors.", rating: 4.8 },
-        { name: "Paneer Biryani", price: 160, img: "biryani6.jpg", description: "Biryani with paneer cubes and spices.", rating: 4.4 }
+        { name: "Hyderabadi Biryani", price: 300, img: "briyani5.jpg", description: "Authentic Hyderabadi biryani with rich flavors.", rating: 4.8 },
+        { name: "Paneer Biryani", price: 160, img: "briyani6.jpg", description: "Biryani with paneer cubes and spices.", rating: 4.4 }
     ]
 };
 
