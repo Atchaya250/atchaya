@@ -70,6 +70,11 @@ function loadRestaurantMenu() {
     menuDiv.style.display = "block";
     menuDiv.innerHTML = ""; // Clear previous menu
 
+    // Create a label for the restaurant selection
+    const selectLabel = document.createElement("h2");
+    selectLabel.innerText = "Select Restaurant";
+    menuDiv.appendChild(selectLabel); // Append label to the menuDiv
+
     for (const restaurant in menus) {
         const restaurantDiv = document.createElement("div");
         restaurantDiv.innerHTML = `<h3>${restaurant}</h3>`;
