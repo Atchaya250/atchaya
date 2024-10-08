@@ -4,7 +4,7 @@ let totalPrice = 0;
 // Sample menus for each restaurant with descriptions and ratings
 const menus = {
     "Pizza Place": [
-        { name: "Margherita Pizza", price: 120, img: "pizza1.jpg", description: "Classic pizza with mozzarella and basil.", rating: 4.5 },
+        { name: "Margherita Pizza", price: 120, img: "pizza.jpg", description: "Classic pizza with mozzarella and basil.", rating: 4.5 },
         { name: "Pepperoni Pizza", price: 150, img: "pizza2.jpg", description: "Spicy pepperoni slices on a cheesy base.", rating: 4.7 },
         { name: "Vegetable Pizza", price: 100, img: "pizza3.jpg", description: "Fresh vegetables on a tomato base.", rating: 4.3 },
         { name: "BBQ Chicken Pizza", price: 180, img: "pizza4.jpg", description: "BBQ chicken with red onions and cilantro.", rating: 4.8 },
@@ -12,7 +12,7 @@ const menus = {
         { name: "Hawaiian Pizza", price: 160, img: "pizza6.jpg", description: "Topped with ham and pineapple.", rating: 4.4 }
     ],
     "Burger Joint": [
-        { name: "Cheeseburger", price: 100, img: "burger1.jpg", description: "Juicy beef patty with cheddar cheese.", rating: 4.4 },
+        { name: "Cheeseburger", price: 100, img: "burger.jpg", description: "Juicy beef patty with cheddar cheese.", rating: 4.4 },
         { name: "Veggie Burger", price: 80, img: "burger2.jpg", description: "Delicious plant-based burger.", rating: 4.2 },
         { name: "Bacon Burger", price: 120, img: "burger3.jpg", description: "Loaded with crispy bacon and cheese.", rating: 4.6 },
         { name: "Spicy Chicken Burger", price: 110, img: "burger4.jpg", description: "Crispy chicken with spicy mayo.", rating: 4.5 },
