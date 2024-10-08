@@ -105,8 +105,8 @@ function addToCart(restaurant, foodName, price) {
     }
     cart[foodName].quantity++;
     totalPrice += price;
-    console.log("Item added to cart:",cart[foodname]);
-    console.log("Total Price:",totalPrice);
+    alert('${foodname}has been added to your cart!');
+    
 
     updateCart();
 }
