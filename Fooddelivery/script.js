@@ -105,7 +105,7 @@ function addToCart(restaurant, foodName, price) {
     }
     cart[foodName].quantity++;
     totalPrice += price;
-    alert('"${foodName}"has been added to your cart!');
+    alert('"${foodName}" has been added to your cart!');
     
 
     updateCart();
