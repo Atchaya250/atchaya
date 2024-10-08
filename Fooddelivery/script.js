@@ -128,14 +128,14 @@ function updateCart() {
 function showCart() {
     if(Object.keys(cart).length===0){
         alert("Your cart is empty!");
-        return;
-    }
+    }else{
     document.getElementById("homeContent").style.display = "none";
     document.getElementById("menu").style.display = "none";
     document.getElementById("orderConfirmation").style.display = "none";
     document.getElementById("cart").style.display = "block";
     document.getElementById("breadcrumbs").innerText = "Cart";
 }
+}    
 
 // Checkout Process
 function checkout() {
