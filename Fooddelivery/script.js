@@ -174,14 +174,15 @@ function loadMenu() {
             menuItemDiv.innerHTML = `
                 <img src="${item.img}" alt="${item.name}">
                 <h3>${item.name}</h3>
-                <p>₹${item.price}</p>
+                <div class="rating">⭐ ${item.rating}</div>
+                <p class="price">₹${item.price}</p>
+                <p class="description">${item.description || 'Delicious food item'}</p>
                 <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
             `;
             menuDiv.appendChild(menuItemDiv);
         });
     }
 }
-
 // Confirm Order
 function confirmOrder() {
     alert("Your order has been confirmed!");
