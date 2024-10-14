@@ -162,6 +162,25 @@ function showOrder() {
     orderDetails += `Total Price: ₹${totalPrice}`;
     document.getElementById("orderDetails").innerText = orderDetails;
 }
+function loadMenu() {
+    const restaurant = document.getElementById('restaurantSelect').value;
+    const menuDiv = document.getElementById('menu');
+    menuDiv.innerHTML = '';
+
+    if (restaurant) {
+        menus[restaurant].forEach(item => {
+            const menuItemDiv = document.createElement('div');
+            menuItemDiv.className = 'menu-item';
+            menuItemDiv.innerHTML = `
+                <img src="${item.img}" alt="${item.name}">
+                <h3>${item.name}</h3>
+                <p>₹${item.price}</p>
+                <button onclick="addToCart('${item.name}', ${item.price})">Add to Cart</button>
+            `;
+            menuDiv.appendChild(menuItemDiv);
+        });
+    }
+}
 
 // Confirm Order
 function confirmOrder() {
