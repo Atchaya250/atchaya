@@ -107,7 +107,8 @@ nav ul li:hover {
 }
 .menu {
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
     gap: 20px;
     justify-content: center;
 }
