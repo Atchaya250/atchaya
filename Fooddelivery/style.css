@@ -131,8 +131,8 @@ nav ul li:hover {
     width: 50%;
     height: auto; /* Adjust the height to fit the square box */
     object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .menu-item h3 {
