@@ -14,7 +14,7 @@
 }
 
 .menu-item img {
-    width: 100px; /* Adjust as needed */
+    width: 50px; /* Adjust as needed */
     height: auto; /* Maintain aspect ratio */
     margin-right: 10px;
 }
@@ -89,7 +89,7 @@ nav ul li:hover {
 }
 
 .menu-item img {
-    max-width: 100%;
+    max-width: 50%;
     height: auto;
 }
 
@@ -128,7 +128,7 @@ nav ul li:hover {
 }
 
 .menu-item img {
-    width: 100%;
+    width: 50%;
     height: auto; /* Adjust the height to fit the square box */
     object-fit: cover;
     border-radius: 8px;
