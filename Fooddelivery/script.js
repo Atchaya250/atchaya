@@ -49,6 +49,9 @@ const menus = {
 // Display Home Content
 function showHome() {
     document.getElementById("homeContent").style.display = "block";
+    document.getElementById("menu").style.display = "none";
+    document.getElementById("cart").style.display = "none";
+    document.getElementById("orderConfirmation").style.display = "none";
     
     document.getElementById("breadcrumbs").innerText = "Home";
 }
