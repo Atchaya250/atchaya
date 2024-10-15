@@ -15,8 +15,8 @@
 }
 
 .menu-item img {
-    width: 50px; /* Adjust as needed */
-    height: auto; /* Maintain aspect ratio */
+    width: 50px; 
+    height: auto; 
     margin-right: 10px;
 }
 
@@ -29,9 +29,9 @@
     box-sizing: border-box;
 }
 
-/* Header styles */
+
 header {
-    background-color: black; /* Orange color */
+    background-color: black;
     color: white;
     text-align: center;
     padding: 20px 0;
@@ -95,7 +95,7 @@ nav ul li:hover {
 }
 
 .menu-item button {
-    background-color: #4CAF50; /* Green color */
+    background-color: #4CAF50; 
     color: white;
     border: none;
     padding: 10px;
