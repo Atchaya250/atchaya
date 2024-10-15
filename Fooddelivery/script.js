@@ -131,7 +131,7 @@ function updateCart() {
 // Show Cart
 function showCart() {
     if(Object.keys(cart).length===0){
-        alert("Your cart is empty!");
+        
     }else{
     document.getElementById("homeContent").style.display = "none";
     document.getElementById("menu").style.display = "none";
