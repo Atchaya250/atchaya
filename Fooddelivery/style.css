@@ -1,192 +1,81 @@
-#menu {
-    margin: 20px;
-    text-align: center;
-    border-radius: 5px;
-    padding: 10px;
-}
 
-#restaurantSelect {
-    padding: 10px;
-    font-size: 16px;
-}
-
-.menu-item {
-    display: flex;
-    align-items: center;
-    margin: 10px 0;
-}
-
-.menu-item img {
-    width: 50px; 
-    height: auto; 
-    text-align:center;
-    margin-right: 10px;
-}
-
-.menu-item h4 {
-    margin: 0;
-}/* Basic reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
+/* Header styles */
 header {
     background-color: black;
-    color: white;
+    padding: 10px;
     text-align: center;
-    padding: 20px 0;
+    position: relative;
 }
 
-header h1 {
-    font-size: 2.5em;
-    margin-bottom: 10px;
-}
-
-nav {
-    margin-top: 10px;
-}
-
-nav ul {
-    list-style: none;
-    padding: 0;
-}
-
-nav ul li {
-    display: inline;
-    margin: 0 15px;
-    cursor: pointer;
-    font-weight: bold;
+.header-title h1 {
     color: white;
+    font-size: 2rem;
+    margin: 0;
 }
 
-nav ul li:hover {
+/* Breadcrumbs styles */
+.breadcrumbs {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.breadcrumbs ul {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.breadcrumbs ul li {
+    display: inline;
+}
+
+.breadcrumbs ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.breadcrumbs ul li a:hover {
     text-decoration: underline;
 }
 
-/* Breadcrumb styles */
-#breadcrumbs {
-    margin: 15px 0;
-    font-size: 1.1em;
+/* Section styles */
+section {
+    padding: 20px;
 }
 
-/* Home content styles */
-#homeContent {
-    margin: 20px;
-    text-align: center;
-}
-
-/* Cart styles */
-#cart {
-    margin: 20px;
-}
-
-/* Menu item styles */
-.menu-item {
-    border: 1px solid #ccc;
-    margin: 10px;
-    padding: 15px;
-    border-radius: 5px;
-    text-align: center;
-}
-
-.menu-item img {
-    max-width: 50%;
-    height: auto;
-}
-
-.menu-item button {
-    background-color: #4CAF50; 
-    color: white;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.menu-item button:hover {
-    background-color: #45a049;
-}
-.menu {
+.menu-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
     gap: 20px;
-    padding: 20px;
-    
+    justify-content: space-around;
 }
 
 .menu-item {
-    background-color: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    width: calc(33.333% - 20px); /* Ensure 3 items per row with spacing */
+    width: 30%;
+    border: 1px solid #ccc;
+    padding: 10px;
     text-align: center;
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
+    box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
 .menu-item img {
-    width: 50%;
-    height: auto; /* Adjust the height to fit the square box */
-    object-fit: cover;
-    border-radius: 5px;
-    margin-bottom: 5px;
+    width: 100%;
+    border-radius: 8px;
 }
 
-.menu-item h3 {
-    font-size: 16px;
-    margin-bottom: 5px;
-}
-
-.menu-item .rating {
-    font-size: 14px;
-    color: #f39c12; /* Gold color for rating stars */
-    margin-bottom: 5px;
-}
-
-.menu-item p {
-    font-size: 14px;
-    margin-bottom: 5px;
-    color: #555;
-}
-
-.menu-item .price {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 10px;
-}
-
-.menu-item button {
+button {
     background-color: black;
     color: white;
     border: none;
-    padding: 8px 15px;
+    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
 }
 
-.menu-item button:hover {
+button:hover {
     background-color: #444;
-}
-
-@media (max-width: 768px) {
-    .menu-item {
-        width: 45%;
-        height: auto;
-    }
-}
-
-@media (max-width: 480px) {
-    .menu-item {
-        width: 100%;
-        height: auto;
-    }
 }
