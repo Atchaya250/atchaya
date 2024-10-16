@@ -7,71 +7,64 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Header with breadcrumbs -->
     <header>
-        <div class="header-title">
-            <h1>Food Delivery App</h1>
-        </div>
-        <nav class="breadcrumbs">
-            <ul>
-                <li><a href="#" onclick="goHome()">Home</a></li>
+        <h1>Food Delivery App</h1>
+        <nav>
+            <ul id="breadcrumbs">
+                <li><a href="#" onclick="showHome()">Home</a></li>
                 <li><a href="#" onclick="showRestaurants()">Restaurants</a></li>
-                <li><a href="#" onclick="viewCart()">Cart</a></li>
-                <li><a href="#" onclick="proceedToCheckout()">Place Order</a></li>
+                <li><a href="#" onclick="showCart()">Cart</a></li>
+                <li><a href="#" onclick="placeOrder()">Place Order</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Home Section -->
-    <section id="home-section">
+    <section id="homeSection">
         <h2>Welcome to the Food Delivery App</h2>
-        <p>Explore various restaurants and enjoy your favorite dishes!</p>
+        <button onclick="showRestaurants()">View Restaurants</button>
     </section>
 
-    <!-- Restaurants Section -->
-    <section id="restaurant-section" style="display:none;">
+    <section id="restaurantSection" style="display: none;">
         <h2>Select a Restaurant</h2>
-        <select id="restaurant-select" onchange="showRestaurantMenu()">
-            <option value="">Select a Restaurant</option>
-            <option value="Pizza Place">Pizza Place</option>
-            <option value="Burger Joint">Burger Joint</option>
-            <option value="Sushi Spot">Sushi Spot</option>
-            <option value="Pasta House">Pasta House</option>
-            <option value="Indian Tandoor">Indian Tandoor</option>
-            <option value="Mexican Grill">Mexican Grill</option>
-        </select>
-        <div id="menu-section" class="menu-container"></div>
+        <div id="restaurantList"></div>
     </section>
 
-    <!-- Cart Section -->
-    <section id="cart-section" style="display:none;">
+    <section id="menuSection" style="display: none;">
+        <h2>Restaurant Menu</h2>
+        <div id="restaurantDetails"></div>
+        <div id="menuList"></div>
+        <button onclick="showCart()">Proceed to Cart</button>
+    </section>
+
+    <section id="cartSection" style="display: none;">
         <h2>Your Cart</h2>
-        <div id="cart-items"></div>
-        <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+        <ul id="cartItems"></ul>
+        <p>Total Price: ₹<span id="totalPrice">0</span></p>
+        <button onclick="checkout()">Checkout</button>
     </section>
 
-    <!-- Delivery Information Section -->
-    <section id="delivery-info-section" style="display:none;">
+    <section id="checkoutSection" style="display: none;">
         <h2>Delivery Information</h2>
-        <form id="delivery-info-form">
+        <form id="deliveryForm">
             <label for="name">Name:</label>
-            <input type="text" id="name" required><br><br>
-
+            <input type="text" id="name" name="name" required>
             <label for="address">Address:</label>
-            <input type="text" id="address" required><br><br>
+            <input type="text" id="address" name="address" required>
+            <label for="deliveryTime">Delivery Time:</label>
+            <input type="time" id="deliveryTime" name="deliveryTime" required>
 
-            <label for="time">Delivery Time:</label>
-            <input type="time" id="time" required><br><br>
-
-            <label for="payment">Payment Mode:</label>
-            <select id="payment">
-                <option value="Credit Card">Credit Card</option>
-                <option value="Debit Card">Debit Card</option>
-                <option value="Cash on Delivery">Cash on Delivery</option>
-            </select><br><br>
-
-            <button type="submit" onclick="submitOrder()">Place Order</button>
+            <h3>Select Payment Method:</h3>
+            <label><input type="radio" name="paymentMode" value="Card" required> Card</label>
+            <label><input type="radio" name="paymentMode" value="UPI"> UPI</label>
+            <label><input type="radio" name="paymentMode" value="Cash on Delivery"> Cash on Delivery</label>
+            
+            <button type="submit" onclick="confirmOrder()">Place Order</button>
         </form>
+    </section>
+
+    <section id="orderConfirmationSection" style="display: none;">
+        <h2>Order Confirmed!</h2>
+        <p>Your order has been placed successfully.</p>
     </section>
 
     <script src="script.js"></script>
