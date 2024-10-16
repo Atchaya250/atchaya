@@ -1,146 +1,164 @@
-function hideAllSections() {
-    document.getElementById('home-section').style.display = 'none';
-    document.getElementById('restaurant-section').style.display = 'none';
-    document.getElementById('cart-section').style.display = 'none';
-    document.getElementById('delivery-info-section').style.display = 'none';
+let cart = {};
+let totalPrice = 0;
+
+const restaurants = {
+    "Pizza Place": {
+        img: "pizza-place.jpg",
+        address: "123 Pizza Street",
+        deliveryTime: "30 mins",
+        menu: [
+            { name: "Margherita Pizza", price: 120, img: "pizza1.jpg", rating: 4.5, description: "Classic pizza with cheese and tomato." },
+            { name: "Pepperoni Pizza", price: 150, img: "pizza2.jpg", rating: 4.7, description: "Topped with pepperoni and cheese." },
+            { name: "Vegetable Pizza", price: 100, img: "pizza3.jpg", rating: 4.3, description: "Fresh vegetables with mozzarella." }
+        ]
+    },
+    "Burger Joint": {
+        img: "burger-joint.jpg",
+        address: "456 Burger Lane",
+        deliveryTime: "20 mins",
+        menu: [
+            { name: "Cheeseburger", price: 100, img: "burger1.jpg", rating: 4.4, description: "Juicy beef patty with cheese." },
+            { name: "Veggie Burger", price: 80, img: "burger2.jpg", rating: 4.2, description: "Delicious veggie patty." },
+            { name: "Bacon Burger", price: 120, img: "burger3.jpg", rating: 4.6, description: "Crispy bacon with beef patty." }
+        ]
+    },
+    "Pasta House": {
+        img: "pasta-house.jpg",
+        address: "789 Pasta Avenue",
+        deliveryTime: "40 mins",
+        menu: [
+            { name: "Spaghetti Bolognese", price: 140, img: "pasta1.jpg", rating: 4.8, description: "Rich meat sauce with spaghetti." },
+            { name: "Penne Alfredo", price: 120, img: "pasta2.jpg", rating: 4.5, description: "Creamy Alfredo sauce with penne." },
+            { name: "Fettuccine Carbonara", price: 130, img: "pasta3.jpg", rating: 4.6, description: "Egg, cheese, and pancetta sauce." }
+        ]
+    }
+};
+
+function showRestaurants() {
+    document.getElementById('homeSection').style.display = 'none';
+    document.getElementById('restaurantSection').style.display = 'block';
+    const restaurantList = document.getElementById('restaurantList');
+    restaurantList.innerHTML = '';
+    for (let restaurant in restaurants) {
+        const restaurantDiv = document.createElement('div');
+        restaurantDiv.className = 'restaurant';
+        restaurantDiv.innerHTML = `
+            <img src="${restaurants[restaurant].img}" alt="${restaurant}">
+            <h3>${restaurant}</h3>
+            <p>${restaurants[restaurant].address}</p>
+            <p>Delivery Time: ${restaurants[restaurant].deliveryTime}</p>
+            <button onclick="showMenu('${restaurant}')">View Menu</button>
+        `;
+        restaurantList.appendChild(restaurantDiv);
+    }
 }
 
-function goHome() {
-    hideAllSections();
-    document.getElementById('home-section').style.display = 'block';
+function showMenu(restaurant) {
+    document.getElementById('restaurantSection').style.display = 'none';
+    document.getElementById('menuSection').style.display = 'block';
+    const restaurantDetails = document.getElementById('restaurantDetails');
+    restaurantDetails.innerHTML = `
+        <img src="${restaurants[restaurant].img}" alt="${restaurant}">
+        <h3>${restaurant}</h3>
+        <p>${restaurants[restaurant].address}</p>
+        <p>Delivery Time: ${restaurants[restaurant].deliveryTime}</p>
+    `;
+    const menuList = document.getElementById('menuList');
+    menuList.innerHTML = '';
+    restaurants[restaurant].menu.forEach(item => {
+        const menuItem = document.createElement('div');
+        menuItem.className = 'menu-item';
+    
+        menuItem.innerHTML = `
+            <img src="${item.img}" alt="${item.name}">
+            <h4>${item.name}</h4>
+            <p>Price: ₹${item.price}</p>
+            <p>Rating: ${item.rating}⭐</p>
+            <p>${item.description}</p>
+            <button onclick="addToCart('${restaurant}', '${item.name}', ${item.price})">Add to Cart</button>
+        `;
+        menuList.appendChild(menuItem);
+    });
+}
+
+function addToCart(restaurant, itemName, itemPrice) {
+    if (!cart[restaurant]) {
+        cart[restaurant] = {};
+    }
+    if (!cart[restaurant][itemName]) {
+        cart[restaurant][itemName] = { price: itemPrice, quantity: 0 };
+    }
+    cart[restaurant][itemName].quantity++;
+    totalPrice += itemPrice;
+    alert(`${itemName} added to cart!`);
+}
+
+function showCart() {
+    document.getElementById('menuSection').style.display = 'none';
+    document.getElementById('cartSection').style.display = 'block';
+    const cartItems = document.getElementById('cartItems');
+    cartItems.innerHTML = '';
+    for (let restaurant in cart) {
+        for (let itemName in cart[restaurant]) {
+            const item = cart[restaurant][itemName];
+            const cartItem = document.createElement('li');
+            cartItem.innerHTML = `
+                <span>${itemName} (${restaurant}) - ₹${item.price} x ${item.quantity}</span>
+                <button onclick="increaseItem('${restaurant}', '${itemName}')">+</button>
+                <button onclick="decreaseItem('${restaurant}', '${itemName}')">-</button>
+            `;
+            cartItems.appendChild(cartItem);
+        }
+    }
+    document.getElementById('totalPrice').innerText = totalPrice;
+}
+
+function increaseItem(restaurant, itemName) {
+    cart[restaurant][itemName].quantity++;
+    totalPrice += cart[restaurant][itemName].price;
+    showCart();
+}
+
+function decreaseItem(restaurant, itemName) {
+    if (cart[restaurant][itemName].quantity > 0) {
+        cart[restaurant][itemName].quantity--;
+        totalPrice -= cart[restaurant][itemName].price;
+        if (cart[restaurant][itemName].quantity === 0) {
+            delete cart[restaurant][itemName];
+        }
+    }
+    showCart();
+}
+
+function checkout() {
+    document.getElementById('cartSection').style.display = 'none';
+    document.getElementById('checkoutSection').style.display = 'block';
+}
+
+function confirmOrder() {
+    event.preventDefault();
+    alert("Order placed successfully!");
+    cart = {};
+    totalPrice = 0;
+    document.getElementById('checkoutSection').style.display = 'none';
+    document.getElementById('orderConfirmationSection').style.display = 'block';
+}
+
+function placeOrder() {
+    alert("Please fill the delivery form.");
+}
+
+function showHome() {
+    document.getElementById('homeSection').style.display = 'block';
+    document.getElementById('restaurantSection').style.display = 'none';
+    document.getElementById('menuSection').style.display = 'none';
+    document.getElementById('cartSection').style.display = 'none';
+    document.getElementById('checkoutSection').style.display = 'none';
+    document.getElementById('orderConfirmationSection').style.display = 'none';
 }
 
 function showRestaurants() {
-    hideAllSections();
-    document.getElementById('restaurant-section').style.display = 'block';
-}
-
-function viewCart() {
-    hideAllSections();
-    document.getElementById('cart-section').style.display = 'block';
-}
-
-function proceedToCheckout() {
-    hideAllSections();
-    document.getElementById('delivery-info-section').style.display = 'block';
-}
-
-// Sample menu data for 6 restaurants
-const menuData = {
-    "Pizza Place": [
-        { name: "Margherita Pizza", price: "₹120", rating: "4.5", img: "pizza1.jpg" },
-        { name: "Pepperoni Pizza", price: "₹150", rating: "4.7", img: "pizza2.jpg" },
-        { name: "Vegetable Pizza", price: "₹100", rating: "4.3", img: "pizza3.jpg" }
-    ],
-    "Burger Joint": [
-        { name: "Cheeseburger", price: "₹180", rating: "4.6", img: "burger1.jpg" },
-        { name: "Bacon Burger", price: "₹220", rating: "4.7", img: "burger2.jpg" },
-        { name: "Veggie Burger", price: "₹150", rating: "4.4", img: "burger3.jpg" }
-    ],
-    "Sushi Spot": [
-        { name: "California Roll", price: "₹250", rating: "4.8", img: "sushi1.jpg" },
-        { name: "Tuna Roll", price: "₹230", rating: "4.5", img: "sushi2.jpg" },
-        { name: "Salmon Roll", price: "₹240", rating: "4.6", img: "sushi3.jpg" }
-    ],
-    "Pasta House": [
-        { name: "Spaghetti Bolognese", price: "₹300", rating: "4.7", img: "pasta1.jpg" },
-        { name: "Penne Alfredo", price: "₹280", rating: "4.5", img: "pasta2.jpg" },
-        { name: "Lasagna", price: "₹320", rating: "4.8", img: "pasta3.jpg" }
-    ],
-    "Indian Tandoor": [
-        { name: "Butter Chicken", price: "₹350", rating: "4.8", img: "indian1.jpg" },
-        { name: "Paneer Tikka", price: "₹280", rating: "4.7", img: "indian2.jpg" },
-        { name: "Naan & Curry", price: "₹250", rating: "4.5", img: "indian3.jpg" }
-    ],
-    "Mexican Grill": [
-        { name: "Tacos", price: "₹200", rating: "4.6", img: "mexican1.jpg" },
-        { name: "Burrito", price: "₹220", rating: "4.7", img: "mexican2.jpg" },
-        { name: "Quesadilla", price: "₹180", rating: "4.5", img: "mexican3.jpg" }
-    ]
-};
-
-function showRestaurantMenu() {
-    const restaurant = document.getElementById('restaurant-select').value;
-    const menuSection = document.getElementById('menu-section');
-    menuSection.innerHTML = ''; // Clear previous content
-
-    if (restaurant && menuData[restaurant]) {
-        menuData[restaurant].forEach(dish => {
-            const dishItem = `
-                <div class="menu-item">
-                <img src="${dish.img}" alt="${dish.name}">
-                <h3>${dish.name} - ${dish.price}</h3>
-                <p>Rating: ${dish.rating} ⭐</p>
-                <button onclick="addToCart('${dish.name}', '${dish.price}')">Add to Cart</button>
-            </div>
-            `;
-            menuSection.innerHTML += dishItem;
-        });
-    }
-}
-
-let cart = [];
-
-function addToCart(name, price) {
-    const item = cart.find(cartItem => cartItem.name === name);
-    if (item) {
-        item.quantity += 1;
-    } else {
-        cart.push({ name, price, quantity: 1 });
-    }
-    updateCart();
-}
-
-function updateCart() {
-    const cartSection = document.getElementById('cart-items');
-    cartSection.innerHTML = ''; // Clear previous content
-
-    if (cart.length === 0) {
-        cartSection.innerHTML = '<p>Your cart is empty.</p>';
-    } else {
-        cart.forEach(item => {
-            const cartItem = `
-                <div class="cart-item">
-                    <h3>${item.name} - ${item.price}</h3>
-                    <p>Quantity: ${item.quantity}</p>
-                    <button onclick="increaseQuantity('${item.name}')">+</button>
-                    <button onclick="decreaseQuantity('${item.name}')">-</button>
-                </div>
-            `;
-            cartSection.innerHTML += cartItem;
-        });
-    }
-}
-
-function increaseQuantity(name) {
-    const item = cart.find(cartItem => cartItem.name === name);
-    if (item) {
-        item.quantity += 1;
-        updateCart();
-    }
-}
-
-function decreaseQuantity(name) {
-    const item = cart.find(cartItem => cartItem.name === name);
-    if (item && item.quantity > 1) {
-        item.quantity -= 1;
-    } else {
-        cart = cart.filter(cartItem => cartItem.name !== name);
-    }
-    updateCart();
-}
-
-function submitOrder() {
-    const name = document.getElementById('name').value;
-    const address = document.getElementById('address').value;
-    const time = document.getElementById('time').value;
-    const paymentMode = document.getElementById('payment').value;
-
-    if (name && address && time && paymentMode) {
-        alert(`Order placed successfully! \nName: ${name} \nAddress: ${address} \nDelivery Time: ${time} \nPayment Mode: ${paymentMode}`);
-        cart = []; // Clear the cart
-        goHome(); // Redirect to home
-    } else {
-        alert('Please fill in all the details.');
-    }
+    showHome();
+    document.getElementById('homeSection').style.display = 'none';
+    document.getElementById('restaurantSection').style.display = 'block';
 }
