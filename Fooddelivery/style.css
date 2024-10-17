@@ -86,7 +86,7 @@ section {
     cursor: pointer;
 }
 .proceed-btn {
-    background-color: black;
+    background-color: green;
     color: white;
     border: none;
     padding: 10px;
@@ -173,7 +173,7 @@ h2, h4 {
 }
 
 #delivery-form button {
-    background-color: black; /* Use black for the button */
+    background-color: green; /* Use black for the button */
     color: white;
     border: none;
     padding: 10px 15px; /* Padding for button */
