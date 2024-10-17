@@ -1,164 +1,163 @@
-let cart = {};
-let totalPrice = 0;
+const cart = []; // Initialize an empty cart array
 
-const restaurants = {
-    "Pizza Place": {
-        img: "pizza-place.jpg",
-        address: "123 Pizza Street",
-        deliveryTime: "30 mins",
-        menu: [
-            { name: "Margherita Pizza", price: 120, img: "pizza1.jpg", rating: 4.5, description: "Classic pizza with cheese and tomato." },
-            { name: "Pepperoni Pizza", price: 150, img: "pizza2.jpg", rating: 4.7, description: "Topped with pepperoni and cheese." },
-            { name: "Vegetable Pizza", price: 100, img: "pizza3.jpg", rating: 4.3, description: "Fresh vegetables with mozzarella." }
-        ]
-    },
-    "Burger Joint": {
-        img: "burger-joint.jpg",
-        address: "456 Burger Lane",
-        deliveryTime: "20 mins",
-        menu: [
-            { name: "Cheeseburger", price: 100, img: "burger1.jpg", rating: 4.4, description: "Juicy beef patty with cheese." },
-            { name: "Veggie Burger", price: 80, img: "burger2.jpg", rating: 4.2, description: "Delicious veggie patty." },
-            { name: "Bacon Burger", price: 120, img: "burger3.jpg", rating: 4.6, description: "Crispy bacon with beef patty." }
-        ]
-    },
-    "Pasta House": {
-        img: "pasta-house.jpg",
-        address: "789 Pasta Avenue",
-        deliveryTime: "40 mins",
-        menu: [
-            { name: "Spaghetti Bolognese", price: 140, img: "pasta1.jpg", rating: 4.8, description: "Rich meat sauce with spaghetti." },
-            { name: "Penne Alfredo", price: 120, img: "pasta2.jpg", rating: 4.5, description: "Creamy Alfredo sauce with penne." },
-            { name: "Fettuccine Carbonara", price: 130, img: "pasta3.jpg", rating: 4.6, description: "Egg, cheese, and pancetta sauce." }
-        ]
-    }
-};
+// Sample dishes for three restaurants
+const dishes = [
+    // Restaurant 1 Dishes
+    [
+        { name: 'Margherita Pizza', description: 'Classic Margherita', price: 500, rating: 4.5, img: 'dish1.jpg' },
+        { name: 'Pasta Primavera', description: 'Fresh Veggie Pasta', price: 400, rating: 4.6, img: 'dish2.jpg' },
+        { name: 'Caesar Salad', description: 'Crispy Salad with Dressing', price: 300, rating: 4.2, img: 'dish3.jpg' },
+        { name: 'Garlic Bread', description: 'Toasted Garlic Bread', price: 150, rating: 4.0, img: 'dish4.jpg' },
+        { name: 'Tiramisu', description: 'Classic Italian Dessert', price: 250, rating: 4.7, img: 'dish5.jpg' },
+        { name: 'Lemonade', description: 'Fresh Lemonade', price: 100, rating: 4.3, img: 'dish6.jpg' }
+    ],
+    // Restaurant 2 Dishes
+    [
+        { name: 'Sushi Platter', description: 'Assorted Sushi', price: 600, rating: 4.8, img: 'dish7.jpg' },
+        { name: 'Ramen', description: 'Spicy Ramen Bowl', price: 350, rating: 4.4, img: 'dish8.jpg' },
+        { name: 'Spring Rolls', description: 'Crispy Spring Rolls', price: 120, rating: 4.1, img: 'dish9.jpg' },
+        { name: 'Curry', description: 'Spicy Chicken Curry', price: 350, rating: 4.9, img: 'dish10.jpg' },
+        { name: 'Dessert', description: 'Chocolate Mousse', price: 150, rating: 4.7, img: 'dish11.jpg' }
+    ],
+    // Restaurant 3 Dishes
+    [
+        { name: 'Steak', description: 'Grilled Steak', price: 700, rating: 4.8, img: 'dish12.jpg' },
+        { name: 'Seafood', description: 'Mixed Seafood Platter', price: 800, rating: 4.9, img: 'dish13.jpg' },
+        { name: 'Sandwich', description: 'Club Sandwich', price: 250, rating: 4.3, img: 'dish14.jpg' },
+        { name: 'Coffee', description: 'Espresso Coffee', price: 100, rating: 4.6, img: 'dish15.jpg' },
+        { name: 'Ice Cream', description: 'Vanilla Ice Cream', price: 90, rating: 4.5, img: 'dish16.jpg' },
+        { name: 'Pancakes', description: 'Fluffy Pancakes', price: 200, rating: 4.4, img: 'dish17.jpg' }
+    ]
+];
 
-function showRestaurants() {
-    document.getElementById('homeSection').style.display = 'none';
-    document.getElementById('restaurantSection').style.display = 'block';
-    const restaurantList = document.getElementById('restaurantList');
-    restaurantList.innerHTML = '';
-    for (let restaurant in restaurants) {
-        const restaurantDiv = document.createElement('div');
-        restaurantDiv.className = 'restaurant';
-        restaurantDiv.innerHTML = `
-            <img src="${restaurants[restaurant].img}" alt="${restaurant}">
-            <h3>${restaurant}</h3>
-            <p>${restaurants[restaurant].address}</p>
-            <p>Delivery Time: ${restaurants[restaurant].deliveryTime}</p>
-            <button onclick="showMenu('${restaurant}')">View Menu</button>
-        `;
-        restaurantList.appendChild(restaurantDiv);
+// Function to navigate between sections
+function navigateTo(section) {
+    document.getElementById('home-section').style.display = 'none';
+    document.getElementById('restaurant-section').style.display = 'none';
+    document.getElementById('menu-section').style.display = 'none';
+    document.getElementById('cart-section').style.display = 'none';
+    document.getElementById('delivery-info-section').style.display = 'none';
+
+    if (section === 'home') {
+        document.getElementById('home-section').style.display = 'block';
+    } else if (section === 'restaurant') {
+        document.getElementById('restaurant-section').style.display = 'block';
+    } else if (section === 'menu') {
+        document.getElementById('menu-section').style.display = 'block';
+    } else if (section === 'cart') {
+        displayCartItems();
+        document.getElementById('cart-section').style.display = 'block';
+    } else if (section === 'orderPlaced') {
+        document.getElementById('delivery-info-section').style.display = 'block';
     }
 }
 
-function showMenu(restaurant) {
-    document.getElementById('restaurantSection').style.display = 'none';
-    document.getElementById('menuSection').style.display = 'block';
-    const restaurantDetails = document.getElementById('restaurantDetails');
-    restaurantDetails.innerHTML = `
-        <img src="${restaurants[restaurant].img}" alt="${restaurant}">
-        <h3>${restaurant}</h3>
-        <p>${restaurants[restaurant].address}</p>
-        <p>Delivery Time: ${restaurants[restaurant].deliveryTime}</p>
-    `;
-    const menuList = document.getElementById('menuList');
-    menuList.innerHTML = '';
-    restaurants[restaurant].menu.forEach(item => {
-        const menuItem = document.createElement('div');
-        menuItem.className = 'menu-item';
-    
-        menuItem.innerHTML = `
-            <img src="${item.img}" alt="${item.name}">
-            <h4>${item.name}</h4>
-            <p>Price: ₹${item.price}</p>
-            <p>Rating: ${item.rating}⭐</p>
-            <p>${item.description}</p>
-            <button onclick="addToCart('${restaurant}', '${item.name}', ${item.price})">Add to Cart</button>
+// Function to view menu
+function viewMenu(restaurantIndex) {
+    const menuContainer = document.querySelector('.menu-items-container');
+    menuContainer.innerHTML = ''; // Clear previous menu items
+
+    dishes[restaurantIndex].forEach(dish => {
+        const dishDiv = document.createElement('div');
+        dishDiv.classList.add('menu-item');
+
+        dishDiv.innerHTML = `
+            <img src="${dish.img}" alt="${dish.name}" class="dish-img">
+            <h4>${dish.name}</h4>
+            <p>Description: ${dish.description}</p>
+            <p>Price: ₹${dish.price}</p>
+            <p>Rating: ${dish.rating}/5</p>
+            <button class="add-to-cart-btn" onclick="addToCart('${dish.name}', '${dish.description}', ${dish.price}, ${dish.rating}, '${dish.img}')">Add to Cart</button>
         `;
-        menuList.appendChild(menuItem);
+
+        menuContainer.appendChild(dishDiv);
     });
+
+    navigateTo('menu');
 }
 
-function addToCart(restaurant, itemName, itemPrice) {
-    if (!cart[restaurant]) {
-        cart[restaurant] = {};
+// Function to add item to cart and navigate to the cart page
+function addToCart(name, description, price, rating, img) {
+    const existingItem = cart.find(item => item.name === name);
+    if (existingItem) {
+        existingItem.quantity++;
+    } else {
+        cart.push({ name, description, price, rating, img, quantity: 1 });
     }
-    if (!cart[restaurant][itemName]) {
-        cart[restaurant][itemName] = { price: itemPrice, quantity: 0 };
-    }
-    cart[restaurant][itemName].quantity++;
-    totalPrice += itemPrice;
-    alert(`${itemName} added to cart!`);
+    navigateTo('cart'); // Navigate to cart page after adding the item
 }
 
-function showCart() {
-    document.getElementById('menuSection').style.display = 'none';
-    document.getElementById('cartSection').style.display = 'block';
-    const cartItems = document.getElementById('cartItems');
-    cartItems.innerHTML = '';
-    for (let restaurant in cart) {
-        for (let itemName in cart[restaurant]) {
-            const item = cart[restaurant][itemName];
-            const cartItem = document.createElement('li');
-            cartItem.innerHTML = `
-                <span>${itemName} (${restaurant}) - ₹${item.price} x ${item.quantity}</span>
-                <button onclick="increaseItem('${restaurant}', '${itemName}')">+</button>
-                <button onclick="decreaseItem('${restaurant}', '${itemName}')">-</button>
-            `;
-            cartItems.appendChild(cartItem);
+// Function to display cart items
+function displayCartItems() {
+    const cartItemsContainer = document.getElementById('cart-items');
+    cartItemsContainer.innerHTML = ''; // Clear previous cart items
+
+    let totalPrice = 0;
+
+    cart.forEach(item => {
+        const itemDiv = document.createElement('div');
+        itemDiv.classList.add('cart-item');
+
+        itemDiv.innerHTML = `
+            <div class="cart-item-content">
+                <img src="${item.img}" alt="${item.name}" class="cart-dish-img">
+                <div>
+                    <h4>${item.name}</h4>
+                    <p>Description: ${item.description}</p>
+                    <p>Price: ₹${item.price}</p>
+                    <p>Rating: ${item.rating}/5</p>
+                    <div class="quantity-control">
+                        <button onclick="changeQuantity('${item.name}', -1)">-</button>
+                        <span>${item.quantity}</span>
+                        <button onclick="changeQuantity('${item.name}', 1)">+</button>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        cartItemsContainer.appendChild(itemDiv);
+        totalPrice += item.price * item.quantity;
+    });
+
+    const totalDiv = document.getElementById('total-price');
+    totalDiv.innerHTML = `<strong>Total Price: ₹${totalPrice}</strong>`;
+}
+
+// Function to change item quantity in cart
+function changeQuantity(name, change) {
+    const item = cart.find(item => item.name === name);
+    if (item) {
+        item.quantity += change;
+        if (item.quantity <= 0) {
+            cart.splice(cart.indexOf(item), 1);
         }
+        displayCartItems();
     }
-    document.getElementById('totalPrice').innerText = totalPrice;
 }
 
-function increaseItem(restaurant, itemName) {
-    cart[restaurant][itemName].quantity++;
-    totalPrice += cart[restaurant][itemName].price;
-    showCart();
-}
-
-function decreaseItem(restaurant, itemName) {
-    if (cart[restaurant][itemName].quantity > 0) {
-        cart[restaurant][itemName].quantity--;
-        totalPrice -= cart[restaurant][itemName].price;
-        if (cart[restaurant][itemName].quantity === 0) {
-            delete cart[restaurant][itemName];
-        }
+// Function to proceed to checkout and navigate to the order page
+function proceedToCheckout() {
+    if (cart.length === 0) {
+        alert("Your cart is empty. Please add items to the cart before proceeding to checkout.");
+        return;
     }
-    showCart();
+    navigateTo('orderPlaced');
 }
 
-function checkout() {
-    document.getElementById('cartSection').style.display = 'none';
-    document.getElementById('checkoutSection').style.display = 'block';
-}
-
+// Function to confirm order
 function confirmOrder() {
-    event.preventDefault();
-    alert("Order placed successfully!");
-    cart = {};
-    totalPrice = 0;
-    document.getElementById('checkoutSection').style.display = 'none';
-    document.getElementById('orderConfirmationSection').style.display = 'block';
+    const name = document.getElementById('name').value;
+    const address = document.getElementById('address').value;
+    const phone = document.getElementById('phone').value;
+    const payment = document.getElementById('payment').value;
+
+    // Here you can handle the order confirmation logic, like sending the order details to a server.
+
+    alert(`Order Confirmed!\nName: ${name}\nAddress: ${address}\nPhone: ${phone}\nPayment Method: ${payment}`);
+    // Reset cart and navigate to home
+    cart.length = 0; 
+    navigateTo('home');
 }
 
-function placeOrder() {
-    alert("Please fill the delivery form.");
-}
-
-function showHome() {
-    document.getElementById('homeSection').style.display = 'block';
-    document.getElementById('restaurantSection').style.display = 'none';
-    document.getElementById('menuSection').style.display = 'none';
-    document.getElementById('cartSection').style.display = 'none';
-    document.getElementById('checkoutSection').style.display = 'none';
-    document.getElementById('orderConfirmationSection').style.display = 'none';
-}
-
-function showRestaurants() {
-    showHome();
-    document.getElementById('homeSection').style.display = 'none';
-    document.getElementById('restaurantSection').style.display = 'block';
-}
+// Initially navigate to the home section
+navigateTo('home');
