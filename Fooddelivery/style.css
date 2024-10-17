@@ -78,7 +78,7 @@ section {
     height: auto;
 }
 
-.add-to-cart-btn, .view-menu-btn, {
+.add-to-cart-btn, .view-menu-btn {
     background-color: black;
     color: white;
     border: none;
