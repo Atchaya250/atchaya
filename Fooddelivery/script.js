@@ -17,7 +17,7 @@ const dishes = [
         { name: 'Veg Briyani',description: 'Spiced rice with mixed vegetables.', price: 150, rating: 4.4, img: 'briyani2.jpg' },
         { name: 'Mutton Briyani',description: 'Favorful briyani made with mutton.', price: 250, rating: 4.1, img: 'briyani3.jpg' },
         { name: 'Egg Briyani',description: 'Briyani with Boiled eggs and spices.', price: 180, rating: 4.9, img: 'briyani4.jpg' },
-        { name: 'Hyderabadi Briyani',description: 'Authentic Hyderabadi briyani with rich flavors.', price: 300, rating: 4.7, img: 'briyani5.jpg' }
+        { name: 'Hyderabadi Briyani',description: 'Authentic Hyderabadi briyani with rich flavors.', price: 300, rating: 4.7, img: 'briyani5.jpg' },
         { name: 'Paneer Briyani',description: 'Briyani with paneer cubes and spices.', price: 160, rating: 4.7, img: 'briyani6.jpg' }
         
     ],
