@@ -13,20 +13,22 @@ const dishes = [
     ],
     // Restaurant 2 Dishes
     [
-        { name: 'Sushi Platter', description: 'Assorted Sushi', price: 600, rating: 4.8, img: 'dish7.jpg' },
-        { name: 'Ramen', description: 'Spicy Ramen Bowl', price: 350, rating: 4.4, img: 'dish8.jpg' },
-        { name: 'Spring Rolls', description: 'Crispy Spring Rolls', price: 120, rating: 4.1, img: 'dish9.jpg' },
-        { name: 'Curry', description: 'Spicy Chicken Curry', price: 350, rating: 4.9, img: 'dish10.jpg' },
-        { name: 'Dessert', description: 'Chocolate Mousse', price: 150, rating: 4.7, img: 'dish11.jpg' }
+        { name: 'Chicken Briyani', description: 'Aromatic rice with tender chicken pieces.', price: 200, rating: 4.8, img: 'briyani1.jpg' },
+        { name: 'Veg Briyani', description: 'Spiced rice with mixed vegetables.', price: 150, rating: 4.4, img: 'briyani2.jpg' },
+        { name: 'Mutton Briyani', description: 'Favorful briyani made with mutton.', price: 250, rating: 4.1, img: 'briyani3.jpg' },
+        { name: 'Egg Briyani', description: 'Briyani with Boiled eggs and spices.', price: 180, rating: 4.9, img: 'briyani4.jpg' },
+        { name: 'Hyderabadi Briyani', description: 'Authentic Hyderabadi briyani with rich flavors.', price: 300, rating: 4.7, img: 'briyani5.jpg' }
+        { name: 'Paneer Briyani', description: 'Briyani with paneer cubes and spices.', price: 160, rating: 4.7, img: 'briyani6.jpg' }
+        
     ],
     // Restaurant 3 Dishes
     [
-        { name: 'Steak', description: 'Grilled Steak', price: 700, rating: 4.8, img: 'dish12.jpg' },
-        { name: 'Seafood', description: 'Mixed Seafood Platter', price: 800, rating: 4.9, img: 'dish13.jpg' },
-        { name: 'Sandwich', description: 'Club Sandwich', price: 250, rating: 4.3, img: 'dish14.jpg' },
-        { name: 'Coffee', description: 'Espresso Coffee', price: 100, rating: 4.6, img: 'dish15.jpg' },
-        { name: 'Ice Cream', description: 'Vanilla Ice Cream', price: 90, rating: 4.5, img: 'dish16.jpg' },
-        { name: 'Pancakes', description: 'Fluffy Pancakes', price: 200, rating: 4.4, img: 'dish17.jpg' }
+        { name: 'Masala Dosa', description: 'Crispy dosa filled with spicy potato mix.', price: 70, rating: 4.8, img: 'dosa1.jpg' },
+        { name: 'Plain Dosa', description: 'Simple and crispy dosa served with chutney', price: 50, rating: 4.9, img: 'dosa2.jpg' },
+        { name: 'Onion Dosa', description: 'Dosa topped with sauted onions.', price: 80, rating: 4.3, img: 'dosa3.jpg' },
+        { name: 'Rawa Dosa', description: 'Crispy dosa made from semolina.', price: 60, rating: 4.6, img: 'dosa4.jpg' },
+        { name: 'Cheese Dosa', description: 'Filled with melted cheese and served hot.', price: 90, rating: 4.5, img: 'dosa5.jpg' },
+        { name: 'Set Dosa', description: 'Thick and soft dosa served in sets.', price: 75, rating: 4.4, img: 'dosa6.jpg' }
     ]
 ];
 
