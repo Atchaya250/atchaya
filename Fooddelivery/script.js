@@ -4,12 +4,12 @@ const cart = []; // Initialize an empty cart array
 const dishes = [
     // Restaurant 1 Dishes
     [
-        { name: 'Margherita Pizza', description: 'Classic Margherita', price: 500, rating: 4.5, img: 'dish1.jpg' },
-        { name: 'Pasta Primavera', description: 'Fresh Veggie Pasta', price: 400, rating: 4.6, img: 'dish2.jpg' },
-        { name: 'Caesar Salad', description: 'Crispy Salad with Dressing', price: 300, rating: 4.2, img: 'dish3.jpg' },
-        { name: 'Garlic Bread', description: 'Toasted Garlic Bread', price: 150, rating: 4.0, img: 'dish4.jpg' },
-        { name: 'Tiramisu', description: 'Classic Italian Dessert', price: 250, rating: 4.7, img: 'dish5.jpg' },
-        { name: 'Lemonade', description: 'Fresh Lemonade', price: 100, rating: 4.3, img: 'dish6.jpg' }
+        { name: 'Margherita Pizza', description: 'Classic pizza with mozzarella and basil.', price: 500, rating: 4.5, img: 'pizza1.jpg' },
+        { name: 'Pepperoni Pizza', description: 'Spicy Pepperoni slices on a cheesy base', price: 400, rating: 4.6, img: 'pizza2.jpg' },
+        { name: 'Vegetable Pizza', description: 'Fresh Vegetable on a tomato base.', price: 300, rating: 4.2, img: 'pizza3.jpg' },
+        { name: 'BBQ Chicken Pizza', description: 'BBQ Chicken with red onions and cilantro', price: 150, rating: 4.0, img: 'pizza4.jpg' },
+        { name: 'Four Cheese Pizza', description: 'A blend of four delicious cheeses', price: 250, rating: 4.7, img: 'pizza5.jpg' },
+        { name: 'Hawaiian Pizza', description: 'Topped with ham and pineapple', price: 100, rating: 4.3, img: 'pizza6.jpg' }
     ],
     // Restaurant 2 Dishes
     [
