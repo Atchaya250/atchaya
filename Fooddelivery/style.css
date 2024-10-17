@@ -38,6 +38,7 @@ section {
     display: flex;
     align-items: center;
     margin-top: 20px;
+    margin-bottom: 20px!
     text-align: center; 
 }
 
@@ -45,6 +46,7 @@ section {
     width: 150px;
     height: auto;
     margin-right: 20px;
+    max-width:100;
 }
 
 .restaurant-card {
