@@ -131,54 +131,47 @@ section {
 h2, h4 {
     margin-top: 0;
 }
-/* Order Section */
+/* Styles for Order Details Section */
 #delivery-info-section {
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    margin: 20px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#delivery-info-section h2 {
-    margin-bottom: 20px;
-}
-
-#delivery-form {
+    font-size: 14px; /* Overall font size */
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    flex-direction: column; /* Arrange elements in a column */
+    align-items: flex-start; /* Align items to the left */
 }
 
-#delivery-form label {
-    font-weight: bold;
+#delivery-info-section label {
+    font-size: 12px; /* Decrease label font size */
+    margin-bottom: 5px; /* Space between label and input */
 }
 
-#delivery-form input,
-#delivery-form select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 16px;
+#delivery-info-section input,
+#delivery-info-section select {
+    font-size: 14px; /* Input and select font size */
+    padding: 6px; /* Reduced padding for inputs */
+    width: 100%; /* Ensure inputs take full width */
+    max-width: 400px; /* Limit maximum width for inputs */
+    margin-bottom: 10px; /* Space between inputs */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 4px; /* Rounded corners */
 }
 
-#delivery-form button {
-    background-color: #007bff; /* Primary color */
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
+/* Specific styles for payment method dropdown */
+#payment {
+    max-width: 200px; /* Adjust max-width for the dropdown */
 }
 
-#delivery-form button:hover {
-    background-color: #0056b3; /* Darker shade */
+/* Styles for Confirm Order Button */
+#delivery-info-section button[type="submit"] {
+    font-size: 12px; /* Smaller button font size */
+    padding: 8px 16px; /* Adjust padding for the button */
+    background-color: black; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Space above the button */
 }
 
-/* Confirmation Message */
-.confirmation-message {
-    margin-top: 20px;
-    font-size: 18px;
-    color: green;
+#delivery-info-section button[type="submit"]:hover {
+    background-color: #333; /* Darker shade on hover */
 }
