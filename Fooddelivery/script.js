@@ -4,7 +4,7 @@ const cart = []; // Initialize an empty cart array
 const dishes = [
     // Restaurant 1 Dishes
     [
-        { name: 'Margherita Pizza', description: 'Classic pizza with mozzarella and basil.', price: 500, rating: 4.5, img: 'pizza1.jpg' },
+        { name: 'Margherita Pizza', description: 'Classic pizza with mozzarella and basil.', price: 500, rating: 4.5, img: 'pizza.jpg' },
         { name: 'Pepperoni Pizza', description: 'Spicy Pepperoni slices on a cheesy base', price: 400, rating: 4.6, img: 'pizza2.jpg' },
         { name: 'Vegetable Pizza', description: 'Fresh Vegetable on a tomato base.', price: 300, rating: 4.2, img: 'pizza3.jpg' },
         { name: 'BBQ Chicken Pizza', description: 'BBQ Chicken with red onions and cilantro', price: 150, rating: 4.0, img: 'pizza4.jpg' },
