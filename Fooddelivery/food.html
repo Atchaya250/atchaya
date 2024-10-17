@@ -7,64 +7,101 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <header>
-        <h1>Food Delivery App</h1>
-        <nav>
-            <ul id="breadcrumbs">
-                <li><a href="#" onclick="showHome()">Home</a></li>
-                <li><a href="#" onclick="showRestaurants()">Restaurants</a></li>
-                <li><a href="#" onclick="showCart()">Cart</a></li>
-                <li><a href="#" onclick="placeOrder()">Place Order</a></li>
-            </ul>
-        </nav>
+        <h1 class="app-title">Food Delivery App</h1>
+        <ul class="breadcrumbs">
+            <li><a href="#" onclick="navigateTo('home')">Home</a></li>
+            <li><a href="#" onclick="navigateTo('restaurant')">Restaurant</a></li>
+            <li><a href="#" onclick="navigateTo('cart')">Cart</a></li>
+            <li><a href="#" onclick="navigateTo('orderPlaced')">Order Placed</a></li>
+        </ul>
     </header>
 
-    <section id="homeSection">
+    <!-- Home Section -->
+    <section id="home-section">
         <h2>Welcome to the Food Delivery App</h2>
-        <button onclick="showRestaurants()">View Restaurants</button>
+        <p>Order delicious meals from top-rated restaurants near you.</p>
+        <p>Enjoy fast delivery and a wide selection of cuisines!</p>
+        <div class="about-restaurant">
+            <img src="restaurant-about.jpg" alt="About Restaurant" class="restaurant-about-img">
+            <p>We partner with the best restaurants to provide you with a variety of meals. Enjoy fast delivery right to your doorstep!</p>
+        </div>
     </section>
 
-    <section id="restaurantSection" style="display: none;">
+    <!-- Restaurant Section -->
+    <section id="restaurant-section" style="display: none;">
         <h2>Select a Restaurant</h2>
-        <div id="restaurantList"></div>
+        <div class="restaurant-card">
+            <img src="restaurant1.jpg" alt="Restaurant 1" class="restaurant-img">
+            <div class="restaurant-info">
+                <h3>Restaurant One</h3>
+                <p>Address: 123 Main St, City</p>
+                <p>Delivery Time: 30-45 min</p>
+                <p>Rating: 4.5/5</p>
+                <button class="view-menu-btn" onclick="viewMenu(0)">View Menu</button>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <img src="restaurant2.jpg" alt="Restaurant 2" class="restaurant-img">
+            <div class="restaurant-info">
+                <h3>Restaurant Two</h3>
+                <p>Address: 456 Park Ave, City</p>
+                <p>Delivery Time: 25-40 min</p>
+                <p>Rating: 4.7/5</p>
+                <button class="view-menu-btn" onclick="viewMenu(1)">View Menu</button>
+            </div>
+        </div>
+        <div class="restaurant-card">
+            <img src="restaurant3.jpg" alt="Restaurant 3" class="restaurant-img">
+            <div class="restaurant-info">
+                <h3>Restaurant Three</h3>
+                <p>Address: 789 Broadway, City</p>
+                <p>Delivery Time: 20-35 min</p>
+                <p>Rating: 4.8/5</p>
+                <button class="view-menu-btn" onclick="viewMenu(2)">View Menu</button>
+            </div>
+        </div>
     </section>
 
-    <section id="menuSection" style="display: none;">
-        <h2>Restaurant Menu</h2>
-        <div id="restaurantDetails"></div>
-        <div id="menuList"></div>
-        <button onclick="showCart()">Proceed to Cart</button>
+    <!-- Menu Section -->
+    <section id="menu-section" style="display: none;">
+        <h2>Menu</h2>
+        <div class="menu-items-container"></div>
     </section>
 
-    <section id="cartSection" style="display: none;">
+    <!-- Cart Section -->
+    <section id="cart-section" style="display: none;">
         <h2>Your Cart</h2>
-        <ul id="cartItems"></ul>
-        <p>Total Price: ₹<span id="totalPrice">0</span></p>
-        <button onclick="checkout()">Checkout</button>
+        <div id="cart-items">
+            <!-- List of items in the cart -->
+        </div>
+        <h4 id="total-price"></h4>
+        <button class="proceed-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
     </section>
 
-    <section id="checkoutSection" style="display: none;">
+    <!-- Delivery Info Section -->
+    <section id="delivery-info-section" style="display: none;">
         <h2>Delivery Information</h2>
-        <form id="deliveryForm">
+        <form id="delivery-form" onsubmit="confirmOrder(); return false;">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
+
             <label for="address">Address:</label>
             <input type="text" id="address" name="address" required>
-            <label for="deliveryTime">Delivery Time:</label>
-            <input type="time" id="deliveryTime" name="deliveryTime" required>
 
-            <h3>Select Payment Method:</h3>
-            <label><input type="radio" name="paymentMode" value="Card" required> Card</label>
-            <label><input type="radio" name="paymentMode" value="UPI"> UPI</label>
-            <label><input type="radio" name="paymentMode" value="Cash on Delivery"> Cash on Delivery</label>
-            
-            <button type="submit" onclick="confirmOrder()">Place Order</button>
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" required>
+
+            <label for="payment">Payment Mode:</label>
+            <select id="payment" name="payment" required>
+                <option value="cod">Cash on Delivery</option>
+                <option value="debit">Debit Card</option>
+                <option value="credit">Credit Card</option>
+            </select>
+
+            <button type="submit">Confirm Order</button>
         </form>
-    </section>
-
-    <section id="orderConfirmationSection" style="display: none;">
-        <h2>Order Confirmed!</h2>
-        <p>Your order has been placed successfully.</p>
     </section>
 
     <script src="script.js"></script>
