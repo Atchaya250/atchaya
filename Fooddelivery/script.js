@@ -86,7 +86,7 @@ function addToCart(name, description, price, rating, img) {
     } else {
         cart.push({ name, description, price, rating, img, quantity: 1 });
     }
-    navigateTo('cart'); // Navigate to cart page after adding the item
+    alert(`${name} has been added to the cart!`); 
 }
 
 // Function to display cart items
