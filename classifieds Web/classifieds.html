@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Classifieds App</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <header>
@@ -14,9 +14,15 @@
             <button id="listingBtn">Product Listing</button>
             <button id="orderBtn">Order</button>
         </nav>
-        
     </header>
-
+
+    <!-- Breadcrumb Navigation -->
+    <div id="breadcrumbs">
+        <span id="breadcrumb-home" class="breadcrumb hidden">Home</span>
+        <span id="breadcrumb-listing" class="breadcrumb hidden"> > Product Listing</span>
+        <span id="breadcrumb-order" class="breadcrumb hidden"> > Order</span>
+    </div>
+
     <!-- Home Section with Login -->
     <section id="home-section">
         <h2>Login</h2>
@@ -49,14 +55,17 @@
             <input type="text" id="orderName" placeholder="Name" required>
             <input type="text" id="orderAddress" placeholder="Address" required>
             <input type="text" id="orderPhone" placeholder="Phone" required>
-            
-        <label for="paymentMethod">Choose Payment Method:</label>
-        <select id="paymentMethod" required>
-            <option value="Credit Card">Credit Card</option>
-            <option value="Debit Card">Debit Card</option>
-            <option value="Cash on Delivery">Cash on Delivery</option>
-            
-        </select>
+
+            <!-- New Payment Mode Select -->
+            <select id="paymentMethod" required>
+                <option value="" disabled selected>Select Payment Method</option>
+                <option value="Credit Card">Credit Card</option>
+                <option value="Debit Card">Debit Card</option>
+                <option value="Net Banking">Net Banking</option>
+                <option value="UPI">UPI</option>
+                <option value="Cash on Delivery">Cash on Delivery</option>
+            </select>
+
             <button type="submit">Place Order</button>
         </form>
     </section>
@@ -64,5 +73,3 @@
     <script src="app.js"></script>
 </body>
 </html>
-
-
