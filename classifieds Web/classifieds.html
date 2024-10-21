@@ -55,6 +55,14 @@
             <input type="text" id="orderName" placeholder="Name" required>
             <input type="text" id="orderAddress" placeholder="Address" required>
             <input type="text" id="orderPhone" placeholder="Phone" required>
+            !-- Payment Mode Option -->
+        <label for="paymentMethod">Choose Payment Method:</label>
+        <select id="paymentMethod" required>
+            <option value="Credit Card">Credit Card</option>
+            <option value="Debit Card">Debit Card</option>
+            <option value="Cash on Delivery">Cash on Delivery</option>
+            <option value="PayPal">PayPal</option>
+        </select>
             <button type="submit">Place Order</button>
         </form>
     </section>
