@@ -89,3 +89,18 @@ document.getElementById('listingBtn').addEventListener('click', function() {
 document.getElementById('orderBtn').addEventListener('click', function() {
     showSection('order');
 });
+// Event listener for order form submission
+document.getElementById('orderForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const orderName = document.getElementById('orderName').value;
+    const orderAddress = document.getElementById('orderAddress').value;
+    const orderPhone = document.getElementById('orderPhone').value;
+    const paymentMethod = document.getElementById('paymentMethod').value;
+
+    // Display order confirmation message
+    alert(`Order placed successfully!\nName: ${orderName}\nAddress: ${orderAddress}\nPhone: ${orderPhone}\nPayment Method: ${paymentMethod}`);
+
+    // Reset the order form after submission
+    document.getElementById('orderForm').reset();
+});
