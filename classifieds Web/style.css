@@ -96,3 +96,11 @@ form button {
     background-color: #0056b3;
 }
 
+#orderForm select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
