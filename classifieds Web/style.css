@@ -1,0 +1,98 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+}
+
+header nav {
+    margin-top: 10px;
+}
+
+header button {
+    margin: 0 10px;
+    padding: 10px;
+    background-color: #ff6600;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+/* Breadcrumbs */
+#breadcrumbs {
+    margin: 10px auto;
+    width: 90%;
+    max-width: 600px;
+    padding: 10px;
+    font-size: 1rem;
+}
+
+.breadcrumb {
+    font-weight: bold;
+}
+
+/* Hidden Class */
+.hidden {
+    display: none;
+}
+
+section {
+    margin: 20px auto;
+    width: 90%;
+    max-width: 600px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+form input, form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #28a745;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+#productList {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.product-card {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.buy-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buy-btn:hover {
+    background-color: #0056b3;
+}
+

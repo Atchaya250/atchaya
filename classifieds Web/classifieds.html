@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classifieds App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Classifieds - Buy and Sell Used Products</h1>
+        <nav>
+            <button id="homeBtn">Home</button>
+            <button id="listingBtn">Product Listing</button>
+            <button id="orderBtn">Order</button>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb Navigation -->
+    <div id="breadcrumbs">
+        <span id="breadcrumb-home" class="breadcrumb hidden">Home</span>
+        <span id="breadcrumb-listing" class="breadcrumb hidden"> > Product Listing</span>
+        <span id="breadcrumb-order" class="breadcrumb hidden"> > Order</span>
+    </div>
+
+    <!-- Home Section with Login -->
+    <section id="home-section">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="loginUsername" placeholder="Username" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </section>
+
+    <!-- Product Listing Section -->
+    <section id="listing-section" class="hidden">
+        <h2>Sell a Product</h2>
+        <form id="listingForm">
+            <input type="text" id="productName" placeholder="Product Name" required>
+            <input type="text" id="productCategory" placeholder="Category" required>
+            <input type="number" id="productPrice" placeholder="Price" required>
+            <textarea id="productDescription" placeholder="Description"></textarea>
+            <button type="submit">Add Listing</button>
+        </form>
+
+        <h2>Available Products for Sale</h2>
+        <div id="productList"></div>
+    </section>
+
+    <!-- Order Section -->
+    <section id="order-section" class="hidden">
+        <h2>Order Details</h2>
+        <form id="orderForm">
+            <input type="text" id="orderName" placeholder="Name" required>
+            <input type="text" id="orderAddress" placeholder="Address" required>
+            <input type="text" id="orderPhone" placeholder="Phone" required>
+            <button type="submit">Place Order</button>
+        </form>
+    </section>
+
+    <script src="app.js"></script>
+</body>
+</html>
+
+
