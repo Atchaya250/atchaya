@@ -34,12 +34,12 @@ header button {
     max-width: 600px;
     padding: 10px;
     font-size: 1rem;
-    color: white;
+    font-color: white;
 }
 
 .breadcrumb {
     font-weight: bold;
-    color: white;
+    font-color: white;
 }
 
 /* Hidden Class */
