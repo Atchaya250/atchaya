@@ -1,3 +1,4 @@
+/* General Styles */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -54,7 +55,7 @@ section {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
-form input, form textarea {
+form input, form textarea, form select {
     width: 100%;
     margin-bottom: 10px;
     padding: 10px;
@@ -95,12 +96,3 @@ form button {
 .buy-btn:hover {
     background-color: #0056b3;
 }
-
-#orderForm select {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
