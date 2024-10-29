@@ -27,7 +27,7 @@ header nav button {
 }
 
 header nav button:hover {
-    background-color: #777;
+    background-color: #333;
 }
 
 /* Hidden Section Styling */
@@ -53,7 +53,7 @@ form input, form textarea, form select {
 }
 
 form button {
-    background-color: #333;
+    background-color:  #28a745;
     color: white;
     border: none;
     padding: 0.5rem;
@@ -62,7 +62,7 @@ form button {
 }
 
 form button:hover {
-    background-color: #555;
+    background-color:  #28a745;
 }
 
 /* Product Card Styling */
@@ -83,16 +83,17 @@ form button:hover {
 }
 
 .add-to-cart-btn {
-    background-color: #333;
+    background-color:  #28a745;
     color: white;
     border: none;
     padding: 0.5rem;
     cursor: pointer;
     border-radius: 5px;
+    text-align:left;
 }
 
 .add-to-cart-btn:hover {
-    background-color: #555;
+    background-color:  #28a745;
 }
 
 /* Cart Section Styling */
@@ -106,7 +107,7 @@ form button:hover {
     margin: 1rem 0;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     border-radius: 5px;
     box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 }
@@ -117,7 +118,7 @@ form button:hover {
 }
 
 .quantity-btn {
-    background-color: #333;
+    background-color:  #28a745;
     color: white;
     border: none;
     padding: 0.25rem;
@@ -127,11 +128,11 @@ form button:hover {
 }
 
 .quantity-btn:hover {
-    background-color: #555;
+    background-color:  #28a745;
 }
 
 #proceedToCheckout {
-    background-color: #28a745;
+    background-color:  #28a745;
     color: white;
     padding: 0.75rem;
     font-size: 1rem;
@@ -144,7 +145,7 @@ form button:hover {
 }
 
 #proceedToCheckout:hover {
-    background-color: #218838;
+    background-color:  #28a745;
 }
 
 /* Order Section Styling */
@@ -171,10 +172,13 @@ form button:hover {
 button {
     cursor: pointer;
     border-radius: 5px;
+    background-color:  #28a745;
+
 }
 
 button:hover {
-    background-color: #555;
+    background-color:  #28a745;
     color: white;
 }
+
 
