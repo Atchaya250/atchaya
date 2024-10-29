@@ -118,7 +118,7 @@ form button:hover {
 }
 
 .quantity-btn {
-    background-color:  #28a745;
+    background-color:  #333;
     color: white;
     border: none;
     padding: 0.25rem;
@@ -128,7 +128,7 @@ form button:hover {
 }
 
 .quantity-btn:hover {
-    background-color:  #28a745;
+    background-color:  #333;
 }
 
 #proceedToCheckout {
