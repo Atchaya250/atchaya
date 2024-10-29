@@ -1,13 +1,10 @@
-// Variables to store users and product listings
-let users = [];
 let listings = [];
+let cart = [];
 
 // Event listener for login form
 document.getElementById('loginForm').addEventListener('submit', function(e) {
     e.preventDefault();
     alert('Login successful!');
-
-    // After login, navigate to the product listing page
     showSection('listing');
 });
 
@@ -18,76 +15,108 @@ document.getElementById('listingForm').addEventListener('submit', function(e) {
     const productCategory = document.getElementById('productCategory').value;
     const productPrice = document.getElementById('productPrice').value;
     const productDescription = document.getElementById('productDescription').value;
+    const productImage = document.getElementById('productImage').files[0];
 
-    // Add the new listing to the listings array
-    listings.push({ productName, productCategory, productPrice, productDescription });
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        listings.push({
+            productName,
+            productCategory,
+            productPrice,
+            productDescription,
+            productImage: event.target.result,
+        });
 
-    // Clear the form
-    document.getElementById('listingForm').reset();
-
-    // Display updated product listings
-    displayListings();
+        document.getElementById('listingForm').reset();
+        displayListings();
+    };
+    reader.readAsDataURL(productImage);
 });
 
-// Function to display product listings (with buy button navigating to order page)
+// Function to display product listings
 function displayListings() {
     const productList = document.getElementById('productList');
     productList.innerHTML = '';
 
-    listings.forEach(listing => {
+    listings.forEach((listing) => {
         const productCard = document.createElement('div');
         productCard.classList.add('product-card');
         productCard.innerHTML = `
             <h3>${listing.productName}</h3>
+            <img src="${listing.productImage}" alt="${listing.productName}" width="100">
             <p><strong>Category:</strong> ${listing.productCategory}</p>
             <p><strong>Price:</strong> $${listing.productPrice}</p>
             <p>${listing.productDescription}</p>
-            <button class="buy-btn">Buy</button>
+            <button class="add-to-cart-btn">Add to Cart</button>
         `;
 
-        // Add event listener to Buy button to navigate to order page
-        productCard.querySelector('.buy-btn').addEventListener('click', function() {
-            showSection('order');
+        productCard.querySelector('.add-to-cart-btn').addEventListener('click', function() {
+            addToCart(listing);
+            alert('Item added to cart');
         });
 
         productList.appendChild(productCard);
     });
 }
 
-// Function to toggle sections and breadcrumbs
-function showSection(section) {
-    document.getElementById('home-section').classList.add('hidden');
-    document.getElementById('listing-section').classList.add('hidden');
-    document.getElementById('order-section').classList.add('hidden');
-
-    document.getElementById('breadcrumb-home').classList.add('hidden');
-    document.getElementById('breadcrumb-listing').classList.add('hidden');
-    document.getElementById('breadcrumb-order').classList.add('hidden');
-
-    if (section === 'home') {
-        document.getElementById('home-section').classList.remove('hidden');
-        document.getElementById('breadcrumb-home').classList.remove('hidden');
-    } else if (section === 'listing') {
-        document.getElementById('listing-section').classList.remove('hidden');
-        document.getElementById('breadcrumb-home').classList.remove('hidden');
-        document.getElementById('breadcrumb-listing').classList.remove('hidden');
-    } else if (section === 'order') {
-        document.getElementById('order-section').classList.remove('hidden');
-        document.getElementById('breadcrumb-home').classList.remove('hidden');
-        document.getElementById('breadcrumb-order').classList.remove('hidden');
+// Function to add an item to the cart
+function addToCart(product) {
+    const cartItem = cart.find(item => item.productName === product.productName);
+    if (cartItem) {
+        cartItem.quantity += 1;
+    } else {
+        cart.push({ ...product, quantity: 1 });
     }
+    displayCart();
 }
 
-// Event listener for order form submission
+// Function to display cart items with increment and decrement functionality
+function displayCart() {
+    const cartList = document.getElementById('cartList');
+    cartList.innerHTML = '';
+
+    cart.forEach((item, index) => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.innerHTML = `
+            <h3>${item.productName}</h3>
+            <img src="${item.productImage}" alt="${item.productName}" width="100">
+            <p><strong>Price:</strong> $${item.productPrice}</p>
+            <p><strong>Quantity:</strong> 
+                <button class="quantity-btn" onclick="updateQuantity(${index}, 'decrement')">-</button>
+                ${item.quantity}
+                <button class="quantity-btn" onclick="updateQuantity(${index}, 'increment')">+</button>
+            </p>
+            <p><strong>Total:</strong> $${item.productPrice * item.quantity}</p>
+        `;
+        cartList.appendChild(cartItem);
+    });
+}
+
+// Function to update the quantity of items in the cart
+function updateQuantity(index, action) {
+    if (action === 'increment') {
+        cart[index].quantity += 1;
+    } else if (action === 'decrement' && cart[index].quantity > 1) {
+        cart[index].quantity -= 1;
+    }
+    displayCart();
+}
+
+// Event listener for Proceed to Checkout button
+document.getElementById('proceedToCheckout').addEventListener('click', function() {
+    showSection('order');
+});
 document.getElementById('orderForm').addEventListener('submit', function(e) {
     e.preventDefault();
-    const orderName = document.getElementById('orderName').value;
-    const orderAddress = document.getElementById('orderAddress').value;
-    const orderPhone = document.getElementById('orderPhone').value;
-    const paymentMethod = document.getElementById('paymentMethod').value; // Get selected payment method
+    
+    const orderName = document.getElementById('customerName').value;
+    const orderAddress = document.getElementById('customerAddress').value;
+    const orderPhone = document.getElementById('customerPhone').value;
+    const paymentMode = document.getElementById('paymentMode').value; // Capture selected payment mode
 
-    // Confirm order details with payment method
-    alert(`Order placed for ${orderName}\nAddress: ${orderAddress}\nPhone: ${orderPhone}\nPayment Method: ${paymentMethod}`);
+    // Confirm order details with payment mode
+    alert(`Order placed for ${orderName}\nAddress: ${orderAddress}\nPhone: ${orderPhone}\nPayment Mode: ${paymentMode}`);
     
     // Reset the form after submission
     document.getElementById('orderForm').reset();
@@ -96,15 +125,27 @@ document.getElementById('orderForm').addEventListener('submit', function(e) {
     showSection('home');
 });
 
-// Event listeners for navigation buttons
-document.getElementById('homeBtn').addEventListener('click', function() {
-    showSection('home');
-});
+// Function to switch between sections
+function showSection(section) {
+    document.getElementById('home-section').classList.add('hidden');
+    document.getElementById('listing-section').classList.add('hidden');
+    document.getElementById('cart-section').classList.add('hidden');
+    document.getElementById('order-section').classList.add('hidden');
 
-document.getElementById('listingBtn').addEventListener('click', function() {
-    showSection('listing');
-});
+    if (section === 'home') {
+        document.getElementById('home-section').classList.remove('hidden');
+    } else if (section === 'listing') {
+        document.getElementById('listing-section').classList.remove('hidden');
+    } else if (section === 'cart') {
+        displayCart();
+        document.getElementById('cart-section').classList.remove('hidden');
+    } else if (section === 'order') {
+        document.getElementById('order-section').classList.remove('hidden');
+    }
+}
 
-document.getElementById('orderBtn').addEventListener('click', function() {
-    showSection('order');
-});
+// Navigation buttons to switch sections
+document.getElementById('homeBtn').addEventListener('click', () => showSection('home'));
+document.getElementById('listingBtn').addEventListener('click', () => showSection('listing'));
+document.getElementById('cartBtn').addEventListener('click', () => showSection('cart'));
+document.getElementById('orderBtn').addEventListener('click', () => showSection('order'));
