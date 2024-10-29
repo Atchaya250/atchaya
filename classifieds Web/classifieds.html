@@ -12,17 +12,10 @@
         <nav>
             <button id="homeBtn">Home</button>
             <button id="listingBtn">Product Listing</button>
+            <button id="cartBtn">Cart</button>
             <button id="orderBtn">Order</button>
         </nav>
     </header>
-
-    <!-- Breadcrumb Navigation -->
-    <div id="breadcrumbs">
-        <span id="breadcrumb-home" class="breadcrumb hidden"></span>
-        <span id="breadcrumb-listing" class="breadcrumb hidden"></span>
-        <span id="breadcrumb-order" class="breadcrumb hidden"></span>
-    </div>
-    
 
     <!-- Home Section with Login -->
     <section id="home-section">
@@ -42,6 +35,7 @@
             <input type="text" id="productCategory" placeholder="Category" required>
             <input type="number" id="productPrice" placeholder="Price" required>
             <textarea id="productDescription" placeholder="Description"></textarea>
+            <input type="file" id="productImage" accept="image/*" required>
             <button type="submit">Add Listing</button>
         </form>
 
@@ -49,25 +43,28 @@
         <div id="productList"></div>
     </section>
 
+    <!-- Cart Section -->
+    <section id="cart-section" class="hidden">
+        <h2>Items in Cart</h2>
+        <div id="cartList"></div>
+        <button id="proceedToCheckout">Proceed to Checkout</button>
+    </section>
+
     <!-- Order Section -->
     <section id="order-section" class="hidden">
         <h2>Order Details</h2>
         <form id="orderForm">
-            <input type="text" id="orderName" placeholder="Name" required>
-            <input type="text" id="orderAddress" placeholder="Address" required>
-            <input type="text" id="orderPhone" placeholder="Phone" required>
-
-            <!-- New Payment Mode Select -->
-            <select id="paymentMethod" required>
-                <option value="" disabled selected>Select Payment Method</option>
-                <option value="Credit Card">Credit Card</option>
-                <option value="Debit Card">Debit Card</option>
-                <option value="Net Banking">Net Banking</option>
-                <option value="UPI">UPI</option>
-                <option value="Cash on Delivery">Cash on Delivery</option>
-            </select>
-
-            <button type="submit">Place Order</button>
+            <input type="text" id="customerName" placeholder="Name" required>
+            <input type="text" id="customerAddress" placeholder="Address" required>
+            <input type="text" id="customerPhone" placeholder="Phone Number" required>
+           <select id="paymentMode" required>
+            <option value="" disabled selected>Select Payment Mode</option>
+            <option value="credit_card">Credit Card</option>
+            <option value="debit_card">Debit Card</option>
+            <option value="paypal">PayPal</option>
+            <option value="cash_on_delivery">Cash on Delivery</option>
+          </select>
+            <button type="submit">Confirm Order</button>
         </form>
     </section>
 
